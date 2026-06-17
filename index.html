@@ -255,7 +255,20 @@
       transform: rotate(45deg);
     }
 
-    .bubble p { margin: 0; font-weight: 750; line-height: 1.45; }
+    .bubble p,
+    .bubble-text { margin: 0; font-weight: 750; line-height: 1.45; }
+    .bubble h3 {
+      margin: 0 0 6px;
+      color: var(--ih-blue);
+      font-size: 17px;
+      line-height: 1.25;
+    }
+    .bubble ul {
+      margin: 8px 0 0;
+      padding-left: 18px;
+      font-weight: 750;
+      line-height: 1.42;
+    }
 
     .screen-card {
       background: var(--card);
@@ -1125,6 +1138,64 @@
       .guide-media-frame { animation: none !important; }
     }
 
+    .guide-card.guide-react {
+      transform-origin: center bottom;
+    }
+
+    .guide-card.guide-react .guide-img-wrap {
+      animation: guideCharacterPop .72s cubic-bezier(.19, 1, .22, 1) both;
+    }
+
+    .guide-card.guide-react .bubble {
+      animation: guideBubbleReact .72s cubic-bezier(.19, 1, .22, 1) both;
+      box-shadow: 0 16px 34px rgba(59,68,181,.16);
+    }
+
+    @media (max-width: 739px) {
+      .guide-card.guide-react {
+        position: fixed;
+        left: 12px;
+        right: 12px;
+        bottom: 82px;
+        z-index: 45;
+        grid-template-columns: 94px 1fr;
+        align-items: end;
+        max-height: calc(100vh - 116px);
+        overflow: visible;
+        background: rgba(255,255,255,.96);
+        animation: mobileGuideReact .82s cubic-bezier(.18, 1.16, .32, 1) both;
+      }
+
+      .guide-card.guide-react .guide-img-wrap {
+        min-height: 108px;
+      }
+
+      .guide-card.guide-react .guide-img {
+        width: 108px;
+        max-height: 148px;
+      }
+
+      .guide-card.guide-react .guide-media-frame {
+        width: 108px;
+        height: 132px;
+        border-radius: 24px;
+      }
+
+      .guide-card.guide-react .bubble {
+        max-height: 38vh;
+        overflow: auto;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .guide-card.guide-react,
+      .guide-card.guide-react .guide-img-wrap,
+      .guide-card.guide-react .bubble {
+        animation: none !important;
+        transform: none !important;
+      }
+    }
+
     @keyframes guideIn {
       0% { opacity: 0; transform: translateX(-20px) translateY(8px); }
       70% { opacity: 1; transform: translateX(3px) translateY(-4px); }
@@ -1139,6 +1210,27 @@
     @keyframes bubbleIn {
       0% { opacity: 0; transform: scale(.96) translateY(5px); }
       100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    @keyframes guideCharacterPop {
+      0% { transform: translateY(8px) scale(.95); }
+      55% { transform: translateY(-8px) scale(1.06); }
+      78% { transform: translateY(2px) scale(.99); }
+      100% { transform: translateY(0) scale(1); }
+    }
+
+    @keyframes guideBubbleReact {
+      0% { opacity: .55; transform: translateY(12px) scale(.94); }
+      52% { opacity: 1; transform: translateY(-5px) scale(1.04); }
+      76% { transform: translateY(2px) scale(.99); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes mobileGuideReact {
+      0% { opacity: 0; transform: translateY(42px) scale(.94); }
+      58% { opacity: 1; transform: translateY(-8px) scale(1.03); }
+      78% { transform: translateY(3px) scale(.99); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     @keyframes pop {
@@ -1311,6 +1403,7 @@
     let dPresses = [];
     let logoTaps = [];
     let lastXpDisplayed = totalXp();
+    let guideReaction = { screen: null, token: 0 };
 
     function currentStorageKey() {
       return devMode ? DEV_STORAGE_KEY : REAL_STORAGE_KEY;
@@ -1391,8 +1484,9 @@
       saveState();
     }
 
-    function setFeedback(i, type, html) {
-      state.feedback[i] = { type, html };
+    function setFeedback(i, type, html, bubbleHtml = html) {
+      state.feedback[i] = { type, html, bubbleHtml };
+      guideReaction = { screen: i, token: guideReaction.token + 1 };
       saveState();
     }
 
@@ -1449,7 +1543,12 @@
 
       if (options.onReveal) options.onReveal();
       state.flags[`reveal_${i}`] = true;
-      setFeedback(i, "info", `${answerHtml}<br><br><strong>Forward unlocked. Review the answer, then continue.</strong>`);
+      setFeedback(
+        i,
+        "info",
+        `${answerHtml}<br><br><strong>Forward unlocked. Review the answer, then continue.</strong>`,
+        "Forward unlocked. Review the answer, then continue."
+      );
       complete(i, 0);
     }
 
@@ -1554,7 +1653,7 @@
     }
 
     function guideMediaHtml(i) {
-      if (i === 0) {
+      if (i === 0 && !state.feedback[i] && !isCompleted(i)) {
         return `
           <div class="guide-media-frame" aria-label="IELTS guide waving">
             <video
@@ -1573,6 +1672,17 @@
       }
 
       return `<img class="guide-img" src="${guideImage()}" alt="IELTS guide character">`;
+    }
+
+    function guideBubbleHtml(i) {
+      const fb = state.feedback[i];
+      if (fb) {
+        if (fb.bubbleHtml) return fb.bubbleHtml;
+        if (fb.type === "info") return "Forward unlocked. Review the answer, then continue.";
+        return fb.html;
+      }
+      if (isCompleted(i) && i !== 15) return "Forward unlocked. Your answer is saved.";
+      return esc(guideLines[i]);
     }
 
     function hasAnyAnswerOnScreen(i) {
@@ -1597,16 +1707,17 @@
       const main = document.getElementById("appMain");
       const i = state.screen;
       const tryAgain = state.flags.tryAgainScreen === i && !isCompleted(i);
+      const reactToken = guideReaction.screen === i ? guideReaction.token : 0;
 
       main.innerHTML = `
         ${priorityBanner(i)}
         ${reviewBanner(i)}
         <div class="layout">
-          <aside class="guide-card">
+          <aside class="guide-card ${reactToken ? "guide-react" : ""}" aria-live="polite">
             <div class="guide-img-wrap">
               ${guideMediaHtml(i)}
             </div>
-            <div class="bubble"><p>${guideLines[i]}</p></div>
+            <div class="bubble"><div class="bubble-text">${guideBubbleHtml(i)}</div></div>
           </aside>
           <section class="screen-card ${tryAgain ? "try-again" : ""}">
             <div class="screen-head">
@@ -1625,6 +1736,15 @@
       bindScreen(i);
       updateChrome();
       renderDevPanel();
+
+      if (reactToken) {
+        const token = reactToken;
+        setTimeout(() => {
+          if (guideReaction.token !== token) return;
+          guideReaction.screen = null;
+          main.querySelector(".guide-card")?.classList.remove("guide-react");
+        }, 3600);
+      }
 
       if (i === 15 && !state.flags.confettiShown) {
         state.flags.confettiShown = true;
@@ -1677,9 +1797,7 @@
     }
 
     function feedbackHtml(i) {
-      const fb = state.feedback[i];
-      if (!fb) return "";
-      return `<div class="feedback ${fb.type}">${fb.html}</div>`;
+      return "";
     }
 
     function revealedAnswerHtml(i) {
