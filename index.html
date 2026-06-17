@@ -19,12 +19,9 @@
       --ink: #1c1c28;
       --bg: #fbfbfd;
       --card: #ffffff;
-      --soft: #eef0ff;
       --muted: #676a7b;
-      --line: rgba(28,28,40,.12);
       --shadow: 0 18px 55px rgba(59,68,181,.13);
       --shadow-soft: 0 8px 25px rgba(28,28,40,.08);
-      --radius: 18px;
       --max: 1120px;
     }
 
@@ -41,24 +38,11 @@
         linear-gradient(180deg, #fff 0%, var(--bg) 42%, #f7f8ff 100%);
     }
 
-    button, input, textarea, select {
-      font: inherit;
-    }
+    button, input, textarea, select { font: inherit; }
+    button { border: 0; cursor: pointer; }
+    button:disabled { cursor: not-allowed; }
 
-    button {
-      border: 0;
-      cursor: pointer;
-    }
-
-    button:disabled {
-      cursor: not-allowed;
-    }
-
-    .app {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
+    .app { min-height: 100vh; display: flex; flex-direction: column; }
 
     .topbar {
       position: sticky;
@@ -89,6 +73,7 @@
       align-items: center;
       min-width: 0;
       gap: 10px;
+      user-select: none;
     }
 
     .brand img {
@@ -142,45 +127,7 @@
     }
 
     .xp-pill {
-      position: relative;
       background: linear-gradient(135deg, rgba(244,207,128,.42), #fff);
-    }
-
-    .info-dot {
-      width: 19px;
-      height: 19px;
-      border-radius: 50%;
-      display: inline-grid;
-      place-items: center;
-      background: var(--ih-blue);
-      color: #fff;
-      font-size: 12px;
-      font-weight: 900;
-    }
-
-    .tooltip {
-      position: absolute;
-      right: 0;
-      top: calc(100% + 8px);
-      width: min(310px, 80vw);
-      padding: 12px 13px;
-      border-radius: 14px;
-      background: var(--ink);
-      color: #fff;
-      box-shadow: var(--shadow-soft);
-      font-weight: 700;
-      font-size: 13px;
-      line-height: 1.35;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-4px);
-      transition: .18s ease;
-    }
-
-    .xp-pill:hover .tooltip,
-    .xp-pill:focus-within .tooltip {
-      opacity: 1;
-      transform: translateY(0);
     }
 
     .progress-track {
@@ -217,19 +164,10 @@
       font-size: 14px;
     }
 
-    .priority-banner {
-      border-left: 7px solid var(--gold);
-    }
+    .priority-banner { border-left: 7px solid var(--gold); }
+    .review-banner { border-left: 7px solid var(--ih-blue); color: var(--muted); }
 
-    .review-banner {
-      border-left: 7px solid var(--ih-blue);
-      color: var(--muted);
-    }
-
-    .layout {
-      display: grid;
-      gap: 16px;
-    }
+    .layout { display: grid; gap: 16px; }
 
     .guide-card {
       display: grid;
@@ -238,7 +176,7 @@
       align-items: end;
       background: rgba(255,255,255,.76);
       border: 1px solid rgba(59,68,181,.12);
-      border-radius: var(--radius);
+      border-radius: 18px;
       box-shadow: var(--shadow-soft);
       padding: 12px;
       overflow: hidden;
@@ -260,6 +198,7 @@
       object-fit: contain;
       object-position: bottom center;
       filter: drop-shadow(0 10px 16px rgba(28,28,40,.14));
+      animation: idleFloat 3.8s ease-in-out .7s infinite;
     }
 
     .bubble {
@@ -269,7 +208,7 @@
       border-radius: 18px 18px 18px 6px;
       padding: 13px 14px;
       box-shadow: 0 10px 24px rgba(28,28,40,.07);
-      animation: bubbleIn .38s ease both;
+      animation: bubbleIn .38s ease .12s both;
     }
 
     .bubble:before {
@@ -285,12 +224,7 @@
       transform: rotate(45deg);
     }
 
-    .bubble p {
-      margin: 0;
-      color: var(--ink);
-      font-weight: 750;
-      line-height: 1.45;
-    }
+    .bubble p { margin: 0; font-weight: 750; line-height: 1.45; }
 
     .screen-card {
       background: var(--card);
@@ -300,27 +234,21 @@
       overflow: hidden;
     }
 
+    .screen-card.try-again textarea,
+    .screen-card.try-again input,
+    .screen-card.try-again select,
+    .screen-card.try-again .slot,
+    .screen-card.try-again .tray,
+    .screen-card.try-again .option-btn {
+      animation: gentleShake .34s ease;
+    }
+
     .screen-head {
       padding: 22px 18px 16px;
       background:
         linear-gradient(135deg, rgba(59,68,181,.12), rgba(244,207,128,.12)),
         #fff;
       border-bottom: 1px solid rgba(59,68,181,.08);
-    }
-
-    .screen-kicker {
-      display: inline-flex;
-      align-items: center;
-      gap: 7px;
-      margin-bottom: 8px;
-      padding: 6px 10px;
-      border-radius: 999px;
-      background: rgba(59,68,181,.1);
-      color: var(--ih-blue);
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: .02em;
-      text-transform: uppercase;
     }
 
     h1 {
@@ -339,28 +267,17 @@
       max-width: 78ch;
     }
 
-    .content {
-      padding: 18px;
-      display: grid;
-      gap: 16px;
-    }
+    .content { padding: 18px; display: grid; gap: 16px; }
 
     .copy-block {
       display: grid;
       gap: 10px;
-      color: var(--ink);
       line-height: 1.6;
       font-size: 16px;
     }
 
-    .copy-block p,
-    .copy-block ul {
-      margin: 0;
-    }
-
-    .copy-block ul {
-      padding-left: 20px;
-    }
+    .copy-block p, .copy-block ul { margin: 0; }
+    .copy-block ul { padding-left: 20px; }
 
     .mini-note {
       padding: 12px 13px;
@@ -372,6 +289,7 @@
       line-height: 1.45;
     }
 
+    .answer-reveal,
     .model-answer {
       padding: 14px;
       border-radius: 18px;
@@ -381,6 +299,7 @@
       gap: 12px;
     }
 
+    .answer-reveal h3,
     .model-answer h3 {
       margin: 0;
       color: var(--ih-blue);
@@ -388,6 +307,7 @@
       line-height: 1.25;
     }
 
+    .answer-reveal ul,
     .model-list {
       display: grid;
       gap: 10px;
@@ -396,6 +316,7 @@
       list-style: none;
     }
 
+    .answer-reveal li,
     .model-list li {
       background: #fff;
       border: 1px solid rgba(59,68,181,.12);
@@ -405,10 +326,7 @@
       box-shadow: 0 5px 14px rgba(28,28,40,.04);
     }
 
-    .comparison-grid {
-      display: grid;
-      gap: 9px;
-    }
+    .comparison-grid { display: grid; gap: 9px; }
 
     .comparison-item {
       border-radius: 15px;
@@ -449,11 +367,7 @@
       color: var(--ih-blue);
     }
 
-    .options {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 9px;
-    }
+    .options { display: flex; flex-wrap: wrap; gap: 9px; }
 
     .option-btn,
     .small-btn,
@@ -473,12 +387,7 @@
       box-shadow: 0 5px 14px rgba(28,28,40,.05);
     }
 
-    .option-btn:hover,
-    .small-btn:hover,
-    .primary-btn:hover,
-    .ghost-btn:hover {
-      transform: translateY(-1px);
-    }
+    .option-btn:hover, .small-btn:hover, .primary-btn:hover, .ghost-btn:hover { transform: translateY(-1px); }
 
     .option-btn.selected {
       background: var(--ih-blue);
@@ -508,9 +417,7 @@
       font-size: 13px;
     }
 
-    textarea,
-    input[type="text"],
-    select {
+    textarea, input[type="text"], select {
       width: 100%;
       border: 1px solid rgba(59,68,181,.18);
       background: #fff;
@@ -522,15 +429,9 @@
       transition: border-color .15s ease, box-shadow .15s ease;
     }
 
-    textarea {
-      min-height: 110px;
-      resize: vertical;
-      line-height: 1.5;
-    }
+    textarea { min-height: 110px; resize: vertical; line-height: 1.5; }
 
-    textarea:focus,
-    input[type="text"]:focus,
-    select:focus {
+    textarea:focus, input[type="text"]:focus, select:focus {
       border-color: var(--ih-blue);
       box-shadow: 0 0 0 4px rgba(59,68,181,.1);
     }
@@ -539,15 +440,10 @@
       display: grid;
       gap: 7px;
       font-weight: 850;
-      color: var(--ink);
       line-height: 1.35;
     }
 
-    .hint {
-      color: var(--muted);
-      font-size: 14px;
-      font-weight: 650;
-    }
+    .hint { color: var(--muted); font-size: 14px; font-weight: 650; }
 
     .feedback {
       border-radius: 16px;
@@ -562,6 +458,7 @@
       background: rgba(41,167,104,.12);
       border-color: rgba(41,167,104,.28);
       color: #17643e;
+      animation: correctPulse .65s ease both;
     }
 
     .feedback.warn {
@@ -576,15 +473,7 @@
       color: var(--ih-blue);
     }
 
-    .rank-list,
-    .pool,
-    .slots,
-    .tray-grid,
-    .match-grid,
-    .criteria-grid {
-      display: grid;
-      gap: 10px;
-    }
+    .rank-list, .pool, .slots, .tray-grid, .match-grid, .criteria-grid { display: grid; gap: 10px; }
 
     .rank-item,
     .draggable-card,
@@ -619,10 +508,7 @@
       font-size: 14px;
     }
 
-    .rank-title {
-      font-weight: 900;
-      line-height: 1.3;
-    }
+    .rank-title { font-weight: 900; line-height: 1.3; }
 
     .rank-desc {
       margin-top: 3px;
@@ -632,11 +518,7 @@
       line-height: 1.35;
     }
 
-    .rank-actions {
-      display: flex;
-      flex-direction: column;
-      gap: 5px;
-    }
+    .rank-actions { display: flex; flex-direction: column; gap: 5px; }
 
     .draggable-card {
       user-select: none;
@@ -647,18 +529,12 @@
       transition: transform .15s ease, box-shadow .15s ease, opacity .15s ease;
     }
 
-    .draggable-card:active { cursor: grabbing; }
     .draggable-card:hover { transform: translateY(-1px); box-shadow: 0 9px 20px rgba(28,28,40,.08); }
     .draggable-card.selected-card { outline: 4px solid rgba(244,207,128,.58); }
-    .draggable-card.correct-lock { border-left-color: var(--green); background: rgba(41,167,104,.08); }
-    .draggable-card.wrong-shake { animation: shake .3s ease; border-left-color: var(--orange); }
 
-    .pool {
-      grid-template-columns: 1fr;
-    }
+    .pool { grid-template-columns: 1fr; }
 
-    .slot,
-    .tray {
+    .slot, .tray {
       min-height: 70px;
       background:
         linear-gradient(180deg, rgba(59,68,181,.04), rgba(59,68,181,.015)),
@@ -674,31 +550,16 @@
       font-weight: 750;
     }
 
-    .slot-title,
-    .tray-title {
+    .slot-title, .tray-title {
       color: var(--ih-blue);
       font-weight: 950;
       line-height: 1.3;
       margin-bottom: 2px;
     }
 
-    .tray {
-      min-height: 160px;
-    }
-
-    .tray-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .slot-grid-2 {
-      display: grid;
-      gap: 10px;
-    }
-
-    .slot-group {
-      display: grid;
-      gap: 10px;
-    }
+    .tray { min-height: 160px; }
+    .tray-grid { grid-template-columns: 1fr; }
+    .slot-group { display: grid; gap: 10px; }
 
     .placed-mini {
       display: inline-flex;
@@ -716,36 +577,12 @@
       text-align: left;
     }
 
-    .placed-mini.correct-lock {
-      border-color: rgba(41,167,104,.38);
-      background: rgba(41,167,104,.09);
-    }
+    .remove-x { color: var(--muted); font-size: 13px; font-weight: 950; }
 
-    .remove-x {
-      color: var(--muted);
-      font-size: 13px;
-      font-weight: 950;
-    }
-
-    .question-grid {
-      display: grid;
-      gap: 12px;
-    }
-
-    .match-row {
-      display: grid;
-      gap: 8px;
-    }
-
-    .match-prompt {
-      font-weight: 850;
-      line-height: 1.35;
-    }
-
-    .two-col {
-      display: grid;
-      gap: 12px;
-    }
+    .question-grid { display: grid; gap: 12px; }
+    .match-row { display: grid; gap: 8px; }
+    .match-prompt { font-weight: 850; line-height: 1.35; }
+    .two-col { display: grid; gap: 12px; }
 
     .badge-wall {
       display: grid;
@@ -779,19 +616,8 @@
       font-weight: 950;
     }
 
-    .badge-chip.locked {
-      filter: grayscale(1);
-      opacity: .55;
-    }
-
-    .criteria-grid {
-      grid-template-columns: 1fr;
-    }
-
-    .criterion-card {
-      display: grid;
-      gap: 9px;
-    }
+    .criteria-grid { grid-template-columns: 1fr; }
+    .criterion-card { display: grid; gap: 9px; }
 
     .checkline {
       display: flex;
@@ -801,27 +627,11 @@
       color: var(--muted);
     }
 
-    .checkline input {
-      width: 20px;
-      height: 20px;
-      accent-color: var(--ih-blue);
-    }
+    .checkline input { width: 20px; height: 20px; accent-color: var(--ih-blue); }
 
-    .statement-card {
-      display: grid;
-      gap: 10px;
-    }
-
-    .statement-title {
-      font-weight: 850;
-      line-height: 1.45;
-    }
-
-    .radio-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
+    .statement-card { display: grid; gap: 10px; }
+    .statement-title { font-weight: 850; line-height: 1.45; }
+    .radio-row { display: flex; flex-wrap: wrap; gap: 8px; }
 
     .radio-pill input {
       position: absolute;
@@ -922,10 +732,7 @@
       opacity: .88;
     }
 
-    .result-panel {
-      display: grid;
-      gap: 15px;
-    }
+    .result-panel { display: grid; gap: 15px; }
 
     .result-hero {
       padding: 18px;
@@ -935,6 +742,7 @@
         linear-gradient(135deg, var(--ih-blue), var(--violet));
       color: #fff;
       box-shadow: var(--shadow);
+      animation: resultIn .55s cubic-bezier(.2,.9,.2,1.1) both;
     }
 
     .result-hero h2 {
@@ -942,6 +750,13 @@
       font-size: clamp(29px, 8vw, 52px);
       line-height: .95;
       letter-spacing: -.04em;
+    }
+
+    .result-name {
+      margin: 0 0 12px;
+      font-size: clamp(20px, 5vw, 30px);
+      font-weight: 1000;
+      line-height: 1.05;
     }
 
     .result-stats {
@@ -966,11 +781,7 @@
       opacity: .82;
     }
 
-    .stat-value {
-      margin-top: 3px;
-      font-size: 25px;
-      font-weight: 1000;
-    }
+    .stat-value { margin-top: 3px; font-size: 25px; font-weight: 1000; }
 
     .share-wrap {
       display: grid;
@@ -979,6 +790,7 @@
       border-radius: 24px;
       background: linear-gradient(180deg, rgba(59,68,181,.08), rgba(244,207,128,.12));
       border: 1px solid rgba(59,68,181,.12);
+      animation: resultIn .55s cubic-bezier(.2,.9,.2,1.1) .12s both;
     }
 
     .share-card {
@@ -1041,6 +853,12 @@
       opacity: .9;
     }
 
+    .share-name {
+      font-size: 20px;
+      line-height: 1.05;
+      font-weight: 1000;
+    }
+
     .share-title {
       font-size: clamp(34px, 12vw, 54px);
       line-height: .9;
@@ -1059,12 +877,6 @@
       font-size: 24px;
       font-weight: 1000;
       box-shadow: 0 12px 28px rgba(28,28,40,.16);
-    }
-
-    .share-disclaimer {
-      font-size: 13px;
-      font-weight: 800;
-      opacity: .9;
     }
 
     .share-badges {
@@ -1120,9 +932,7 @@
       animation: toastIn .28s ease both;
     }
 
-    .toast strong {
-      color: var(--gold);
-    }
+    .toast strong { color: var(--gold); }
 
     .dev-panel {
       position: fixed;
@@ -1171,21 +981,10 @@
       border: 1px solid rgba(255,255,255,.16);
     }
 
-    .dev-panel button.dev-primary {
-      background: var(--gold);
-      color: var(--ink);
-    }
+    .dev-panel button.dev-primary { background: var(--gold); color: var(--ink); }
+    .dev-panel button.dev-danger { background: var(--coral); color: #fff; }
 
-    .dev-panel button.dev-danger {
-      background: var(--coral);
-      color: #fff;
-    }
-
-    .dev-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 7px;
-    }
+    .dev-row { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
 
     .dev-check {
       display: flex;
@@ -1198,11 +997,7 @@
       line-height: 1.25;
     }
 
-    .dev-check input {
-      width: 18px;
-      height: 18px;
-      accent-color: var(--gold);
-    }
+    .dev-check input { width: 18px; height: 18px; accent-color: var(--gold); }
 
     .dev-note {
       color: rgba(255,255,255,.78);
@@ -1226,14 +1021,7 @@
     .hidden { display: none !important; }
 
     @media (min-width: 740px) {
-      .topbar-inner {
-        grid-template-columns: 1fr;
-      }
-
-      .brand img {
-        max-height: 48px;
-        max-width: 270px;
-      }
+      .brand img { max-height: 48px; max-width: 270px; }
 
       .layout {
         grid-template-columns: 300px 1fr;
@@ -1247,18 +1035,10 @@
         padding: 16px;
       }
 
-      .guide-img-wrap {
-        min-height: 330px;
-      }
+      .guide-img-wrap { min-height: 330px; }
+      .guide-img { width: 260px; max-height: 380px; }
 
-      .guide-img {
-        width: 260px;
-        max-height: 380px;
-      }
-
-      .bubble {
-        border-radius: 18px 18px 6px 18px;
-      }
+      .bubble { border-radius: 18px 18px 6px 18px; }
 
       .bubble:before {
         left: 42px;
@@ -1269,35 +1049,18 @@
         border-bottom: 1px solid rgba(59,68,181,.16);
       }
 
-      .screen-head {
-        padding: 30px 30px 20px;
-      }
+      .screen-head { padding: 30px 30px 20px; }
+      .content { padding: 28px 30px 30px; }
 
-      .content {
-        padding: 28px 30px 30px;
-      }
-
-      .tray-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-
-      .slot-grid-2,
+      .tray-grid,
       .two-col,
-      .result-stats {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-
+      .result-stats,
       .criteria-grid {
         grid-template-columns: repeat(2, minmax(0,1fr));
       }
 
-      .badge-wall {
-        grid-template-columns: repeat(3, minmax(0,1fr));
-      }
-
-      .nav-inner {
-        grid-template-columns: 76px 1fr 132px;
-      }
+      .badge-wall { grid-template-columns: repeat(3, minmax(0,1fr)); }
+      .nav-inner { grid-template-columns: 76px 1fr 132px; }
     }
 
     @media (max-width: 520px) {
@@ -1320,12 +1083,19 @@
         transition-duration: .01ms !important;
         scroll-behavior: auto !important;
       }
+
+      .guide-img { animation: none !important; }
     }
 
     @keyframes guideIn {
       0% { opacity: 0; transform: translateX(-20px) translateY(8px); }
       70% { opacity: 1; transform: translateX(3px) translateY(-4px); }
       100% { opacity: 1; transform: translateX(0) translateY(0); }
+    }
+
+    @keyframes idleFloat {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-5px); }
     }
 
     @keyframes bubbleIn {
@@ -1336,6 +1106,18 @@
     @keyframes pop {
       0% { opacity: 0; transform: scale(.98); }
       100% { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes correctPulse {
+      0% { opacity: 0; transform: scale(.98); box-shadow: 0 0 0 0 rgba(41,167,104,.0); }
+      35% { opacity: 1; transform: scale(1.01); box-shadow: 0 0 0 8px rgba(41,167,104,.09); }
+      100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(41,167,104,.0); }
+    }
+
+    @keyframes gentleShake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-4px); }
+      75% { transform: translateX(4px); }
     }
 
     @keyframes badgePop {
@@ -1349,10 +1131,9 @@
       100% { transform: scale(1); box-shadow: 0 10px 24px rgba(59,68,181,.22); }
     }
 
-    @keyframes shake {
-      0%, 100% { transform: translateX(0); }
-      25% { transform: translateX(-5px); }
-      75% { transform: translateX(5px); }
+    @keyframes resultIn {
+      0% { opacity: 0; transform: translateY(18px) scale(.98); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
     }
 
     @keyframes toastIn {
@@ -1371,7 +1152,7 @@
     <header class="topbar">
       <div class="topbar-inner">
         <div class="brand-row">
-          <div class="brand" aria-label="InterPress International House Almaty-Astana">
+          <div class="brand" id="brandTap" aria-label="InterPress International House Almaty-Astana">
             <img src="interpress-logo.png" alt="InterPress International House Almaty-Astana" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
             <div class="brand-fallback">
               <span class="brand-fallback-mark">ih</span>
@@ -1379,13 +1160,7 @@
             </div>
           </div>
           <div class="status-pills" aria-live="polite">
-            <span class="pill" id="screenPill">Screen 1/16</span>
-            <span class="pill xp-pill" tabindex="0">
-              <span id="xpPill">XP: 0/1100</span>
-              <span class="info-dot" aria-label="XP information">i</span>
-              <span class="tooltip">XP = lesson engagement. It is not an IELTS band score, mock result, prediction, or official score.</span>
-            </span>
-            <span class="pill" id="badgePill">Badges: 0/5</span>
+            <span class="pill xp-pill" id="xpPill">XP: 0/1100</span>
           </div>
         </div>
         <div class="progress-track" aria-hidden="true">
@@ -1414,15 +1189,15 @@
   <div id="devMount"></div>
 
   <script>
-    const REAL_STORAGE_KEY = "ielts_lesson1_orientation_v2";
-    const DEV_STORAGE_KEY = "ielts_lesson1_orientation_dev_v1";
+    const REAL_STORAGE_KEY = "ielts_lesson1_orientation_v3";
+    const DEV_STORAGE_KEY = "ielts_lesson1_orientation_dev_v3";
     const MAX_XP = 1100;
 
-    function isDevHash() {
+    function hashWantsDev() {
       return location.hash === "#dev" || location.hash.startsWith("#dev-");
     }
 
-    let devMode = isDevHash();
+    let devMode = hashWantsDev();
 
     const badgeMeta = {
       firstInstinct: { name: "First Instinct", icon: "⚡", color: "var(--pink)", text: "You made a prediction before the reveal — and your exam map was sharp." },
@@ -1464,7 +1239,7 @@
     ];
 
     const guideLines = [
-      "Before you practise random tasks, build the map. Make one honest prediction first.",
+      "Before you practise random tasks, build the map. Type your name and make one honest prediction first.",
       "Choose what you most want to understand. Your priority will return later.",
       "Start with what you think is true now. Not sure is a valid answer.",
       "Build the route: hear first, read second, write third — and place Speaking carefully.",
@@ -1476,10 +1251,10 @@
       "Build the Writing system. Task 2 is not just longer — it counts more.",
       "Part 1 is familiar. Part 2 is extended. Part 3 becomes abstract.",
       "Same exam content, different muscle memory. Some details must be checked locally.",
-      "Calculate the scoring rule. XP here is not an IELTS result.",
+      "Calculate the scoring rule. XP here is practice for the scoring logic.",
       "Bad advice sounds confident. Filter it through the exam map.",
       "Write your own IELTS map first. Then compare it with the expert map.",
-      "You completed Lesson 1. Your XP shows engagement, not an IELTS band score."
+      "You completed Lesson 1. Your result shows your lesson progress."
     ];
 
     const initialImages = [
@@ -1496,6 +1271,8 @@
 
     let selectedCardId = null;
     let dPresses = [];
+    let logoTaps = [];
+    let lastXpDisplayed = totalXp();
 
     function currentStorageKey() {
       return devMode ? DEV_STORAGE_KEY : REAL_STORAGE_KEY;
@@ -1533,10 +1310,6 @@
       return Object.values(state.xp || {}).reduce((sum, n) => sum + Number(n || 0), 0);
     }
 
-    function badgeCount() {
-      return badgeOrder.filter(k => state.badges[k]).length;
-    }
-
     function wordCount(str) {
       return String(str || "").trim().split(/\s+/).filter(Boolean).length;
     }
@@ -1544,14 +1317,13 @@
     function hasVerb(str) {
       const text = String(str || "").toLowerCase();
       const verbWords = [
-        "am","is","are","was","were","be","being","been",
-        "have","has","had","do","does","did",
-        "can","could","will","would","should","must","may","might",
-        "want","need","think","feel","know","understand","learn","prepare","practise","practice",
-        "check","take","write","read","speak","listen","manage","use","get","make","build","see",
-        "change","mean","matters","matter","differ","differs","stay","stays","share","shares",
-        "give","gives","count","counts","work","works","study","choose","watch","focus","improve",
-        "remember","plan","help","helps","ask","asks","start","starts"
+        "am","is","are","was","were","be","being","been","have","has","had","do","does","did",
+        "can","could","will","would","should","must","may","might","want","need","think","feel",
+        "know","understand","learn","prepare","practise","practice","check","take","write","read",
+        "speak","listen","manage","use","get","make","build","see","change","mean","matters",
+        "matter","differ","differs","stay","stays","share","shares","give","gives","count","counts",
+        "work","works","study","choose","watch","focus","improve","remember","plan","help","helps",
+        "ask","asks","start","starts"
       ];
       if (verbWords.some(v => new RegExp(`\\b${v}\\b`, "i").test(text))) return true;
       if (/\b\w+(ing|ed)\b/i.test(text)) return true;
@@ -1572,7 +1344,7 @@
       return !!state.completed[i];
     }
 
-    function getAnswer(key, fallback) {
+    function getAnswer(key, fallback = "") {
       return state.answers[key] ?? fallback;
     }
 
@@ -1587,6 +1359,7 @@
     }
 
     function attempt(i) {
+      if (state.completed[i]) return state.attempts[i] || 0;
       state.attempts[i] = (state.attempts[i] || 0) + 1;
       saveState();
       return state.attempts[i];
@@ -1594,7 +1367,7 @@
 
     function award(i, amount) {
       const old = totalXp();
-      if (!state.xp[i]) {
+      if (state.xp[i] === undefined) {
         state.xp[i] = amount;
         saveState();
         animateXp(old, totalXp());
@@ -1606,6 +1379,40 @@
       award(i, amount);
       saveState();
       render();
+    }
+
+    function submitScreen(i, isCorrect, fullXp, hintHtml, answerHtml, options = {}) {
+      if (state.completed[i]) {
+        render();
+        return;
+      }
+
+      const n = attempt(i);
+      state.flags.tryAgainScreen = null;
+
+      if (options.beforeDecision) options.beforeDecision(isCorrect, n);
+
+      if (isCorrect) {
+        if (options.revealOnCorrect) state.flags[`reveal_${i}`] = true;
+        const earned = n === 1 ? fullXp : Math.round(fullXp / 2);
+        if (options.onCorrect) options.onCorrect(n);
+        setFeedback(i, "success", options.successHtml || "Correct. Forward is unlocked.");
+        complete(i, earned);
+        return;
+      }
+
+      if (n === 1) {
+        state.flags.tryAgainScreen = i;
+        setFeedback(i, "warn", `${hintHtml}<br><br><strong>You've got one more attempt — fix it to continue.</strong>`);
+        saveState();
+        render();
+        return;
+      }
+
+      if (options.onReveal) options.onReveal();
+      state.flags[`reveal_${i}`] = true;
+      setFeedback(i, "info", `${answerHtml}<br><br><strong>Forward unlocked. Review the answer, then continue.</strong>`);
+      complete(i, 0);
     }
 
     function unlockBadge(key, secondText) {
@@ -1626,6 +1433,7 @@
         const val = Math.round(from + (to - from) * eased);
         document.getElementById("xpPill").textContent = `XP: ${val}/${MAX_XP}`;
         if (t < 1) requestAnimationFrame(frame);
+        else lastXpDisplayed = to;
       }
       requestAnimationFrame(frame);
     }
@@ -1634,6 +1442,10 @@
       const mount = document.getElementById("toastMount");
       mount.innerHTML = `<div class="toast">${html}</div>`;
       setTimeout(() => { mount.innerHTML = ""; }, 4200);
+    }
+
+    function studentName() {
+      return (state.answers.student_name || "Student").trim();
     }
 
     function currentTitle() {
@@ -1656,9 +1468,10 @@
 
     function updateChrome() {
       const current = state.screen + 1;
-      document.getElementById("screenPill").textContent = `Screen ${current}/16`;
-      document.getElementById("xpPill").textContent = `XP: ${totalXp()}/${MAX_XP}`;
-      document.getElementById("badgePill").textContent = `Badges: ${badgeCount()}/5`;
+      const xpNow = totalXp();
+      if (lastXpDisplayed !== xpNow) animateXp(lastXpDisplayed, xpNow);
+      else document.getElementById("xpPill").textContent = `XP: ${xpNow}/${MAX_XP}`;
+
       document.getElementById("progressFill").style.width = `${(current / 16) * 100}%`;
 
       const back = document.getElementById("backBtn");
@@ -1676,14 +1489,14 @@
       next.title = canGoNext ? "Next" : "Finish the thinking task to unlock forward.";
 
       if (state.screen === 15) {
-        msg.textContent = "Result screen. Use Finish lesson, View result card, or Replay tricky screens.";
+        msg.textContent = "Result screen.";
         next.disabled = true;
         next.classList.add("locked");
         next.classList.remove("next-ready");
       } else if (canGoNext) {
         msg.textContent = "Forward unlocked. Your answer is saved.";
-      } else if (state.attempts[state.screen] && !isCompleted()) {
-        msg.textContent = "Continue from where you stopped. Your work is saved.";
+      } else if ((state.attempts[state.screen] || 0) === 1) {
+        msg.textContent = "You've got one more attempt — fix it to continue.";
       } else {
         msg.textContent = "Finish the thinking task to unlock forward.";
       }
@@ -1695,7 +1508,7 @@
       if (fb && fb.type === "warn") return "Wrong.png";
       if (isCompleted() && state.screen !== 15) return "Correct.png";
       if (state.screen === 0) {
-        const hasWork = state.answers.opening_prediction || state.answers.opening_goal;
+        const hasWork = state.answers.student_name || state.answers.opening_prediction || state.answers.opening_goal;
         return hasWork ? "Thinking.png" : "Welcome.png";
       }
       if ([1,5,6,7,8,9,10,11,12,13,14].includes(state.screen) && hasAnyAnswerOnScreen(state.screen)) return "Thinking.png";
@@ -1723,6 +1536,7 @@
       updateChrome();
       const main = document.getElementById("appMain");
       const i = state.screen;
+      const tryAgain = state.flags.tryAgainScreen === i && !isCompleted(i);
 
       main.innerHTML = `
         ${priorityBanner(i)}
@@ -1734,15 +1548,15 @@
             </div>
             <div class="bubble"><p>${guideLines[i]}</p></div>
           </aside>
-          <section class="screen-card">
+          <section class="screen-card ${tryAgain ? "try-again" : ""}">
             <div class="screen-head">
-              <div class="screen-kicker">Screen ${i + 1}/16 · ${xpMax[i]} XP</div>
               <h1>${screenTitles[i]}</h1>
               ${screenSubtitle(i)}
             </div>
             <div class="content">
               ${screenContent(i)}
               ${feedbackHtml(i)}
+              ${revealedAnswerHtml(i)}
             </div>
           </section>
         </div>
@@ -1777,21 +1591,7 @@
 
     function reviewBanner(i) {
       if (!isCompleted(i) || i === 15) return "";
-      const missed = missedBonusMessage(i);
-      return `
-        <div class="review-banner">
-          Review mode: your answer is saved. XP and badges do not reset.
-          ${missed ? `<br>${missed}` : ""}
-        </div>
-      `;
-    }
-
-    function missedBonusMessage(i) {
-      const a = state.attempts[i] || 0;
-      if ([3,4,5,6,7,8,9,10,11,12].includes(i) && a > 1) {
-        return "First try already counted. You can review the explanation, but this bonus cannot be re-earned in the same run.";
-      }
-      return "";
+      return `<div class="review-banner">Review mode: your answer is saved. XP and badges do not reset.</div>`;
     }
 
     function screenSubtitle(i) {
@@ -1811,7 +1611,7 @@
         "Practise Overall Band Score rounding and sort scoring criteria.",
         "Challenge confident-sounding bad advice with the actual exam map.",
         "Write your own IELTS map first. Then reveal the expert map and compare.",
-        "Your XP, badges, title, takeaway, and optional share card."
+        "Your XP, earned title, badges, takeaway, and optional share card."
       ];
       return `<p class="subcopy">${subtitles[i]}</p>`;
     }
@@ -1820,6 +1620,33 @@
       const fb = state.feedback[i];
       if (!fb) return "";
       return `<div class="feedback ${fb.type}">${fb.html}</div>`;
+    }
+
+    function revealedAnswerHtml(i) {
+      if (!state.flags[`reveal_${i}`]) return "";
+      if (i === 14) return modelAnswerHtml();
+      const html = answerRevealText(i);
+      return html ? `<div class="answer-reveal">${html}</div>` : "";
+    }
+
+    function answerRevealText(i) {
+      const reveals = {
+        0: `<h3>Model answer</h3><ul><li>Type your name or nickname, choose one prediction, and write a short complete goal sentence such as: “I want to understand IELTS before practice.”</li></ul>`,
+        1: `<h3>Model answer</h3><ul><li>Put your most important challenge at the top, then write one short reason, for example: “Because I need to understand the timing.”</li></ul>`,
+        2: `<h3>Model answer</h3><ul><li>Choose the options that best describe you. If you are unsure, “Not sure yet” is acceptable. Write one complete uncertainty sentence.</li></ul>`,
+        3: `<h3>Correct test-day route</h3><ul><li>Main block: Listening → Reading → Writing.</li><li>Separate slot: Speaking.</li></ul>`,
+        4: `<h3>Correct skill sort</h3><ul><li>Same in Academic and General Training: Listening, Speaking.</li><li>Different in Academic and General Training: Reading, Writing.</li></ul>`,
+        5: `<h3>Correct timing map</h3><ul><li>Listening: about 30 minutes, 40 questions, 4 parts.</li><li>Reading: 60 minutes, 40 questions, 3 sections.</li><li>Writing: 60 minutes, 2 tasks.</li><li>Speaking: 11–14 minutes, 3 parts.</li></ul>`,
+        6: `<h3>Correct Listening climb</h3><ul><li>Part 1 = B, Part 2 = A, Part 3 = D, Part 4 = C.</li><li>1 = Multiple choice, 2 = Matching, 3 = Plan/map/diagram labelling, 4 = Completion / short-answer tasks.</li></ul>`,
+        7: `<h3>Correct Reading map</h3><ul><li>Academic Reading: A, B, C.</li><li>General Training Reading: D, E, F.</li><li>General Training Reading usually requires more correct answers for the same band.</li></ul>`,
+        8: `<h3>Correct Reading thinking jobs</h3><ul><li>True/False/Not Given = factual agreement.</li><li>Yes/No/Not Given = writer’s views or claims.</li><li>Headings = paragraph main idea.</li><li>Features/information = connect items to options.</li><li>Completion = fill missing information and obey word limits.</li><li>Multiple choice/short answer = precise detail.</li></ul>`,
+        9: `<h3>Correct Writing plan</h3><ul><li>Academic Task 1 = visual information.</li><li>General Training Task 1 = letter.</li><li>Task 2 = essay in both versions.</li><li>Task 1 = 150 words, about 20 minutes.</li><li>Task 2 = 250 words, about 40 minutes, and counts twice as much.</li></ul>`,
+        10: `<h3>Correct Speaking ladder</h3><ul><li>Part 1 = A + D.</li><li>Part 2 = B + E.</li><li>Part 3 = C + F.</li></ul>`,
+        11: `<h3>Correct paper/computer sort</h3><ul><li>Paper: 1, 4.</li><li>Computer: 2, 7.</li><li>Same in both: 3, 6.</li><li>Check provider / centre: 5, 8, 9.</li></ul>`,
+        12: `<h3>Correct scoring logic</h3><ul><li>6.25 rounds to 6.5.</li><li>6.75 rounds to 7.0.</li><li>Writing: task achievement/response, coherence and cohesion, lexical resource, grammatical range and accuracy.</li><li>Speaking: fluency and coherence, lexical resource, grammatical range and accuracy, pronunciation.</li></ul>`,
+        13: `<h3>Correct rumour filter</h3><ul><li>1 False, 2 False, 3 True, 4 False, 5 True.</li><li>6 False or Check provider / centre, 7 False, 8 True, 9 Check provider / centre.</li></ul>`
+      };
+      return reveals[i] || "";
     }
 
     function bindOptionGroup(root, key) {
@@ -1853,24 +1680,22 @@
     }
 
     function screen1() {
+      const name = esc(getAnswer("student_name", ""));
       const goal = esc(getAnswer("opening_goal", ""));
       return `
         <div class="copy-block">
-          <p>You may hear people say things like:</p>
-          <ul>
-            <li>“IELTS is impossible.”</li>
-            <li>“Just learn templates.”</li>
-            <li>“Speaking is the scariest part.”</li>
-            <li>“Computer is easier.”</li>
-            <li>“Academic is completely different from General.”</li>
-          </ul>
+          <p>You may hear people say things like: “IELTS is impossible,” “Just learn templates,” “Speaking is the scariest part,” “Computer is easier,” or “Academic is completely different from General.”</p>
           <p>Some of those ideas are wrong. Some are partly true. Some depend on your test centre.</p>
           <p>So before you start practising random tasks, you need the map.</p>
-          <p>In this short module, you will figure out what the four IELTS sections are; how Academic and General Training are different; what happens on test day; what each section asks you to do; how paper and computer IELTS feel different; how scoring works; and which rumours you should stop believing.</p>
-          <p>This is not a lecture. You will not just click “Continue.” You will predict, sort, match, calculate, and explain things in your own words. Your XP is for thinking actively. It is not an IELTS score.</p>
+          <p>In this short module, you will figure out the four IELTS sections, Academic/General differences, test-day flow, section demands, delivery mode differences, scoring logic, and which rumours to stop believing.</p>
+          <p class="mini-note">This is not a lecture. You will predict, sort, match, calculate, and explain things in your own words. Your XP is for thinking actively. It is not an IELTS score.</p>
         </div>
         <div class="task-card">
-          <h2 class="task-title">Before we begin, make a prediction.</h2>
+          <h2 class="task-title">Before we begin</h2>
+          <label>
+            Your name
+            <input id="studentName" type="text" autocomplete="name" placeholder="Type your name" value="${name}">
+          </label>
           <p class="hint">IELTS will probably demand the most from my:</p>
           ${optionButtons("opening_prediction", ["Speed", "Focus", "Vocabulary", "Writing organisation", "Speaking confidence", "Time management", "Test-day nerves", "Not sure yet"])}
           <label>
@@ -1885,17 +1710,28 @@
 
     function bind1() {
       bindOptionGroup(document, "opening_prediction");
+      document.getElementById("studentName").addEventListener("input", e => setAnswer("student_name", e.target.value));
       document.getElementById("openingGoal").addEventListener("input", e => setAnswer("opening_goal", e.target.value));
       document.getElementById("save1").addEventListener("click", () => {
+        let name = (state.answers.student_name || "").trim();
         const pred = state.answers.opening_prediction;
         const goal = state.answers.opening_goal || "";
-        if (!pred || !isCompleteShortSentence(goal)) {
-          setFeedback(0, "warn", "Write one full sentence. Future You should understand what you wanted from this lesson.");
-          render();
-          return;
-        }
-        setFeedback(0, "success", `Prediction saved.<br>You chose: <strong>${esc(pred)}</strong><br>At the end of the lesson, we’ll come back to this and check how your view of IELTS changed.`);
-        complete(0, 50);
+        const ok = !!name && !!pred && isCompleteShortSentence(goal);
+
+        submitScreen(
+          0,
+          ok,
+          50,
+          "Type your name, choose one prediction, and write one full sentence. Future You should understand what you wanted from this lesson.",
+          "To continue from here, add your name or nickname, choose one prediction, and write a short goal sentence.",
+          {
+            successHtml: `Prediction saved.<br>You chose: <strong>${esc(pred || "")}</strong><br>At the end of the lesson, we’ll come back to this and check how your view of IELTS changed.`,
+            onReveal: () => {
+              if (!(state.answers.student_name || "").trim()) state.answers.student_name = "Student";
+              saveState();
+            }
+          }
+        );
       });
     }
 
@@ -1946,24 +1782,28 @@
           if (j < 0 || j >= order.length) return;
           [order[idx], order[j]] = [order[j], order[idx]];
           setAnswer("agenda_order", order);
-          state.flags.rankedAgenda = true;
-          saveState();
           render();
         });
       });
+
       document.getElementById("priorityReason").addEventListener("input", e => setAnswer("priority_reason", e.target.value));
       document.getElementById("save2").addEventListener("click", () => {
         const order = state.answers.agenda_order || agendaCards.map(c => c.id);
         const top = agendaCards.find(c => c.id === order[0]);
         const reason = state.answers.priority_reason || "";
-        if (!top || !isCompleteShortSentence(reason)) {
-          setFeedback(1, "warn", "Add a real reason. “Because it is hard” is a start, but tell yourself why it feels hard.");
-          render();
-          return;
-        }
-        state.answers.priority_challenge = top.title;
-        setFeedback(1, "success", `Priority saved: <strong>${esc(top.title)}</strong><br>Good. When this topic appears later, we’ll flag it as your priority so you know to slow down and think carefully.`);
-        complete(1, 50);
+        const ok = !!top && isCompleteShortSentence(reason);
+
+        submitScreen(
+          1,
+          ok,
+          50,
+          "Add a real reason. “Because it is hard” is a start, but tell yourself why it feels hard.",
+          "A complete answer has your top challenge and one short sentence explaining why it matters.",
+          {
+            successHtml: `Priority saved: <strong>${esc(top?.title || "")}</strong><br>Good. When this topic appears later, we’ll flag it as your priority so you know to slow down and think carefully.`,
+            onCorrect: () => { state.answers.priority_challenge = top.title; saveState(); }
+          }
+        );
       });
     }
 
@@ -1994,29 +1834,32 @@
       bindOptionGroup(document, "purpose");
       document.getElementById("worry").addEventListener("input", e => setAnswer("worry", e.target.value));
       document.getElementById("save3").addEventListener("click", () => {
-        const t = state.answers.test_type, d = state.answers.delivery_mode, p = state.answers.purpose, w = state.answers.worry || "";
-        if (!t || !d || !p || !isCompleteShortSentence(w)) {
-          setFeedback(2, "warn", "Write a full sentence with a reason. “I’m not sure about Speaking because I panic under pressure” is the kind of detail that will help later.");
-          render();
-          return;
-        }
+        const t = state.answers.test_type;
+        const d = state.answers.delivery_mode;
+        const p = state.answers.purpose;
+        const w = state.answers.worry || "";
+        const ok = !!t && !!d && !!p && isCompleteShortSentence(w);
+
         let msg = "";
         if (t === "Academic" && p === "University or professional registration") msg = "That matches the usual Academic pathway. You will still check your provider’s exact requirements later.";
         else if (t === "General Training" && p === "Migration, work, training, or study below degree level") msg = "That matches the usual General Training pathway. You will still check your provider’s exact requirements later.";
         else if (t === "Not sure yet" || p === "Not sure yet") msg = "Good. Your goal today is to understand the map well enough to ask the right question later.";
         else msg = "Pause: the documents describe Academic mainly for higher education/professional registration, and General Training mainly for migration, work/training, or below-degree study. You can continue, but mark this as something to verify.";
-        setFeedback(2, "success", msg);
-        complete(2, 60);
+
+        submitScreen(
+          2,
+          ok,
+          60,
+          "Choose one option for all three questions and write a full sentence with a reason.",
+          "A complete answer chooses a test type, delivery mode, purpose, and one short uncertainty sentence. If you are unsure, choose “Not sure yet.”",
+          { successHtml: msg }
+        );
       });
     }
 
     function cardPool(cards, placements) {
       const used = new Set(Object.values(placements || {}).flat().filter(Boolean));
-      return `
-        <div class="pool">
-          ${cards.filter(c => !used.has(c.id)).map(c => `<div class="draggable-card" draggable="true" data-card="${c.id}">${esc(c.label)}</div>`).join("")}
-        </div>
-      `;
+      return `<div class="pool">${cards.filter(c => !used.has(c.id)).map(c => `<div class="draggable-card" draggable="true" data-card="${c.id}">${esc(c.label)}</div>`).join("")}</div>`;
     }
 
     function dropSlot(slotId, title, cards, placements) {
@@ -2038,6 +1881,7 @@
         });
         el.addEventListener("dragstart", ev => ev.dataTransfer.setData("text/plain", el.dataset.card));
       });
+
       document.querySelectorAll("[data-slot],[data-tray]").forEach(zone => {
         zone.addEventListener("dragover", ev => ev.preventDefault());
         zone.addEventListener("drop", ev => {
@@ -2050,6 +1894,7 @@
           if (selectedCardId) placeCard(key, zone.dataset.slot || zone.dataset.tray, selectedCardId, multi);
         });
       });
+
       document.querySelectorAll("[data-remove-slot]").forEach(btn => {
         btn.addEventListener("click", () => {
           const data = { ...(state.answers[key] || {}) };
@@ -2059,6 +1904,7 @@
           render();
         });
       });
+
       document.querySelectorAll("[data-remove-card]").forEach(btn => {
         btn.addEventListener("click", () => {
           const data = { ...(state.answers[key] || {}) };
@@ -2101,17 +1947,12 @@
     }
 
     function screen4() {
-      const cards = [
-        {id:"Listening", label:"Listening"},
-        {id:"Reading", label:"Reading"},
-        {id:"Writing", label:"Writing"},
-        {id:"Speaking", label:"Speaking"}
-      ];
+      const cards = ["Listening","Reading","Writing","Speaking"].map(x => ({ id: x, label: x }));
       const p = state.answers.testday || {};
       return `
         <div class="copy-block">
           <p>Drag the four IELTS sections into the test-day layout.</p>
-          <p class="mini-note">XP challenge: Build the test-day route. First try = full XP. If you need feedback, you still earn XP for fixing the map.</p>
+          <p class="mini-note">XP challenge: Build the test-day route.</p>
         </div>
         <div class="task-card">
           <h2 class="task-title">Cards</h2>
@@ -2131,40 +1972,30 @@
     }
 
     function bind4() {
-      const cards = [{id:"Listening",label:"Listening"},{id:"Reading",label:"Reading"},{id:"Writing",label:"Writing"},{id:"Speaking",label:"Speaking"}];
+      const cards = ["Listening","Reading","Writing","Speaking"].map(x => ({ id: x, label: x }));
       bindPlacement(cards, "testday", false);
       document.getElementById("check4").addEventListener("click", () => {
-        const n = attempt(3);
         const p = state.answers.testday || {};
         const ok = p.main1 === "Listening" && p.main2 === "Reading" && p.main3 === "Writing" && p.separate === "Speaking";
-        if (ok) {
-          let msg = "Yes. The stable operational flow is Listening, then Reading, then Writing, with no break between these three. Speaking is separate in scheduling: it may be on the same day or close to it, depending on the centre.";
-          if (/speaking/i.test(state.answers.worry || "")) msg += "<br><br>Your worry was Speaking. Notice that it has a different scheduling pattern from the other three sections.";
-          setFeedback(3, "success", msg);
-          complete(3, n === 1 ? 60 : 45);
-        } else {
-          let msg = "Not quite. The main block has a fixed order. Think of it as: hear first, read second, write third.";
-          if (p.main1 === "Speaking" || p.main2 === "Speaking" || p.main3 === "Speaking") msg = "Careful. Speaking is one of the four IELTS skills, but it is not part of the uninterrupted Listening–Reading–Writing block.";
-          setFeedback(3, "warn", msg);
-          render();
-        }
+        let success = "Yes. The stable operational flow is Listening, then Reading, then Writing, with no break between these three. Speaking is separate in scheduling: it may be on the same day or close to it, depending on the centre.";
+        if (/speaking/i.test(state.answers.worry || "")) success += "<br><br>Your worry was Speaking. Notice that it has a different scheduling pattern from the other three sections.";
+        submitScreen(3, ok, 60, "Not quite. Think of it as: hear first, read second, write third. Speaking is separate.", answerRevealText(3), { successHtml: success });
       });
     }
 
     function screen5() {
-      const cards = ["Listening","Reading","Writing","Speaking"].map(x => ({id:x,label:x}));
+      const cards = ["Listening","Reading","Writing","Speaking"].map(x => ({ id: x, label: x }));
       const p = state.answers.same_diff || {};
       return `
         <div class="copy-block">
           <p>People often talk about “Academic IELTS” and “General IELTS” as if they are four different tests. That is not accurate.</p>
           <p>Sort the four skill cards into the correct trays.</p>
-          <p class="mini-note">XP challenge: Spot the real difference. Do not guess from the names “Academic” and “General.” Sort by exam structure.</p>
         </div>
         <div class="task-card">
           ${cardPool(cards, p)}
           <div class="tray-grid">
-            ${trayHtml("same", "Tray A: Same in Academic and General Training", cards, p)}
-            ${trayHtml("different", "Tray B: Different in Academic and General Training", cards, p)}
+            ${trayHtml("same", "Same in Academic and General Training", cards, p)}
+            ${trayHtml("different", "Different in Academic and General Training", cards, p)}
           </div>
           <button class="primary-btn" id="check5" type="button">Check the skill sort</button>
         </div>
@@ -2172,27 +2003,18 @@
     }
 
     function bind5() {
-      const cards = ["Listening","Reading","Writing","Speaking"].map(x => ({id:x,label:x}));
+      const cards = ["Listening","Reading","Writing","Speaking"].map(x => ({ id: x, label: x }));
       bindPlacement(cards, "same_diff", true);
       document.getElementById("check5").addEventListener("click", () => {
-        const n = attempt(4);
         const p = state.answers.same_diff || {};
         const same = [...(p.same || [])].sort().join(",");
         const diff = [...(p.different || [])].sort().join(",");
         const ok = same === ["Listening","Speaking"].sort().join(",") && diff === ["Reading","Writing"].sort().join(",");
-        if (ok) {
-          let note = "";
-          if (state.answers.test_type === "Academic") note = "Your path: Academic. Pay extra attention later to academic texts and visual-data Writing Task 1.";
-          else if (state.answers.test_type === "General Training") note = "Your path: General Training. Pay extra attention later to everyday/workplace Reading texts and letter Writing Task 1.";
-          else note = "You do not need to decide today. For now, remember the rule: Listening and Speaking same; Reading and Writing different.";
-          setFeedback(4, "success", `Exactly. Listening and Speaking stay the same. Reading and Writing are where Academic and General Training differ.<br><br>${note}`);
-          complete(4, n === 1 ? 60 : 45);
-        } else {
-          let msg = "This is the key difference. Reading and Writing change because the test purpose changes.";
-          if ((p.different || []).includes("Listening") || (p.different || []).includes("Speaking")) msg = "Not this one. The documents state that Listening and Speaking are the same in Academic and General Training.";
-          setFeedback(4, "warn", msg);
-          render();
-        }
+        let note = "";
+        if (state.answers.test_type === "Academic") note = "Your path: Academic. Pay extra attention later to academic texts and visual-data Writing Task 1.";
+        else if (state.answers.test_type === "General Training") note = "Your path: General Training. Pay extra attention later to everyday/workplace Reading texts and letter Writing Task 1.";
+        else note = "You do not need to decide today. For now, remember the rule: Listening and Speaking same; Reading and Writing different.";
+        submitScreen(4, ok, 60, "Check the key rule: Listening and Speaking stay the same. Reading and Writing differ.", answerRevealText(4), { successHtml: `Exactly. Listening and Speaking stay the same. Reading and Writing are where Academic and General Training differ.<br><br>${note}` });
       });
     }
 
@@ -2219,8 +2041,6 @@
       return `
         <div class="copy-block">
           <p>Guess first. You are not being punished for wrong guesses. The point is to replace rumours with a usable exam map.</p>
-          <p>Use the number tiles to complete the section map.</p>
-          <p class="mini-note">Prediction round: commit before the reveal. Full XP is for a clean first map. Learning XP is still awarded if you fix mistakes after feedback.</p>
         </div>
         <div class="task-card question-grid">
           <h2 class="task-title">Listening</h2>
@@ -2245,7 +2065,6 @@
     function bind6() {
       bindTiles("timing");
       document.getElementById("check6").addEventListener("click", () => {
-        const n = attempt(5);
         const p = state.answers.timing || {};
         const ans = {
           l_time:"About 30 minutes", l_q:"40 questions", l_s:"4 parts",
@@ -2254,19 +2073,17 @@
           s_time:"11–14 minutes", s_s:"3 parts"
         };
         const ok = Object.keys(ans).every(k => p[k] === ans[k]);
-        if (ok) {
-          setFeedback(5, "success", "Good. You now have the basic time map.<br><br>Important note: Some overview pages give IELTS as “2 hours and 45 minutes” overall, but the documents warn that headline totals and detailed timings do not always add up neatly, especially when paper Listening transfer time is discussed. For strategy, learn the operational flow, not just one headline number.");
-          if (n === 1) unlockBadge("firstInstinct");
-          complete(5, n === 1 ? 80 : 60);
-        } else {
-          let msg = "Some tiles need fixing.";
-          if (p.l_s && p.l_s !== ans.l_s) msg = "Listening has four parts, with 40 questions total.";
-          else if ((p.r_s && p.r_s !== ans.r_s) || (p.r_q && p.r_q !== ans.r_q)) msg = "Reading has three sections and 40 questions inside 60 minutes.";
-          else if (p.w_s && p.w_s !== ans.w_s) msg = "Writing has two tasks in 60 minutes.";
-          else if ((p.s_time && p.s_time !== ans.s_time) || (p.s_s && p.s_s !== ans.s_s)) msg = "Speaking is short compared with the written block: 11–14 minutes, three parts.";
-          setFeedback(5, "warn", msg);
-          render();
-        }
+        submitScreen(
+          5,
+          ok,
+          80,
+          "Some tiles need fixing. Listening has 4 parts and 40 questions. Reading has 3 sections and 40 questions. Writing has 2 tasks. Speaking has 3 parts.",
+          answerRevealText(5),
+          {
+            successHtml: "Good. You now have the basic time map.<br><br>Important note: Some overview pages give IELTS as “2 hours and 45 minutes” overall, but headline totals and detailed timings do not always add up neatly. For strategy, learn the operational flow, not just one headline number.",
+            onCorrect: n => { if (n === 1) unlockBadge("firstInstinct"); }
+          }
+        );
       });
     }
 
@@ -2282,8 +2099,6 @@
       return `
         <div class="copy-block">
           <p>Listening has 4 parts and 40 questions. The contexts move from everyday social situations toward educational and academic situations.</p>
-          <p>First, put the four recordings in order. Then match each example to a Listening question type.</p>
-          <p class="mini-note">XP challenge: Track the climb. Listening moves from everyday situations toward academic situations. Build the climb yourself.</p>
         </div>
         <div class="task-card">
           <h2 class="task-title">Recording cards</h2>
@@ -2335,21 +2150,11 @@
       bindPlacement(cards, "listen_order", false);
       bindSelects("listen_match");
       document.getElementById("check7").addEventListener("click", () => {
-        const n = attempt(6);
         const o = state.answers.listen_order || {};
         const m = state.answers.listen_match || {};
         const okOrder = o.part1 === "B" && o.part2 === "A" && o.part3 === "D" && o.part4 === "C";
         const okMatch = m.m1 === "Multiple choice" && m.m2 === "Matching" && m.m3 === "Plan/map/diagram labelling" && m.m4 === "Completion / short-answer tasks";
-        if (okOrder && okMatch) {
-          setFeedback(6, "success", "Yes. The progression is social conversation → social monologue → educational/training conversation → academic monologue.");
-          complete(6, n === 1 ? 80 : 65);
-        } else {
-          let msg = "Look at the action: choose = multiple choice; connect = matching; label a visual = plan/map/diagram; fill missing words = completion or short answer.";
-          if (o.part4 && o.part4 !== "C") msg = "Part 4 is the academic-subject monologue. It is not a conversation.";
-          else if (o.part1 && o.part1 !== "B") msg = "Part 1 is the everyday social conversation between two speakers.";
-          setFeedback(6, "warn", msg);
-          render();
-        }
+        submitScreen(6, okOrder && okMatch, 80, "Track the climb: social conversation → social monologue → educational/training conversation → academic monologue. Then match action to task type.", answerRevealText(6), { successHtml: "Yes. The progression is social conversation → social monologue → educational/training conversation → academic monologue." });
       });
     }
 
@@ -2365,9 +2170,7 @@
       const p = state.answers.reading_sort || {};
       return `
         <div class="copy-block">
-          <p>Reading gives you: 60 minutes, 40 questions, 3 sections, and no extra answer-transfer time on paper.</p>
-          <p>That last point matters. In Reading, answer transfer is part of the 60 minutes.</p>
-          <p class="mini-note">XP alert: transfer-time trap. Reading time includes answer management. Do not treat transfer as a bonus phase.</p>
+          <p>Reading gives you 60 minutes, 40 questions, 3 sections, and no extra answer-transfer time on paper.</p>
         </div>
         <div class="task-card">
           <h2 class="task-title">Sort the text cards</h2>
@@ -2397,25 +2200,15 @@
       bindPlacement(cards, "reading_sort", true);
       bindOptionGroup(document, "reading_diag");
       document.getElementById("check8").addEventListener("click", () => {
-        const n = attempt(7);
         const p = state.answers.reading_sort || {};
         const ac = [...(p.academic || [])].sort().join("");
         const gt = [...(p.general || [])].sort().join("");
         const ok = ac === "ABC" && gt === "DEF" && state.answers.reading_diag === "General Training Reading";
-        if (ok) {
-          let note = "";
-          if (state.answers.test_type === "Academic") note = "Your path is Academic. Notice the long-text and argument focus.";
-          else if (state.answers.test_type === "General Training") note = "Your path is General Training. Notice the everyday, workplace, and general-interest text progression.";
-          else note = "Keep both maps visible until you confirm your test type.";
-          setFeedback(7, "success", `Good. Same clock, different text world.<br><br>${note}`);
-          complete(7, n === 1 ? 75 : 60);
-        } else {
-          let msg = "Ask: is this university-style long-text reading, or everyday/workplace/general-interest reading?";
-          if (state.answers.reading_diag === "Academic Reading") msg = "Careful. The documents explain that General Training Reading usually requires more correct answers for the same band because the text demands differ.";
-          if (state.answers.reading_diag === "The documents do not say") msg = "They do say this: General Training usually requires more correct answers for the same band.";
-          setFeedback(7, "warn", msg);
-          render();
-        }
+        let note = "";
+        if (state.answers.test_type === "Academic") note = "Your path is Academic. Notice the long-text and argument focus.";
+        else if (state.answers.test_type === "General Training") note = "Your path is General Training. Notice the everyday, workplace, and general-interest text progression.";
+        else note = "Keep both maps visible until you confirm your test type.";
+        submitScreen(7, ok, 75, "Ask: is this university-style long-text reading, or everyday/workplace/general-interest reading? Also watch the General Training correct-answer rule.", answerRevealText(7), { successHtml: `Good. Same clock, different text world.<br><br>${note}` });
       });
     }
 
@@ -2439,8 +2232,6 @@
       return `
         <div class="copy-block">
           <p>A question type is a command. It tells your brain what job to do.</p>
-          <p>Match the question type to the thinking job.</p>
-          <p class="mini-note">Trap round. Two labels look similar, but they are not testing the same thing. Read the thinking jobs carefully.</p>
         </div>
         <div class="task-card">
           <div class="match-grid">
@@ -2455,24 +2246,19 @@
     function bind9() {
       bindSelects("reading_match");
       document.getElementById("check9").addEventListener("click", () => {
-        const n = attempt(8);
         const m = state.answers.reading_match || {};
-        const ans = {q1:"A.", q2:"B.", q3:"C.", q4:"D.", q5:"E.", q6:"F."};
-        const trapOk = (m.q1 || "").startsWith("A.") && (m.q2 || "").startsWith("B.");
-        if (n === 1 && trapOk) state.flags.firstTrap9 = true;
-        const ok = Object.keys(ans).every(k => (m[k] || "").startsWith(ans[k]));
-        if (ok) {
-          if (state.flags.firstTrap9) unlockBadge("trapSpotter");
-          setFeedback(8, "success", "Good. You are not just learning names; you are learning what each question asks your brain to do.");
-          complete(8, state.flags.firstTrap9 ? 75 : 50);
-        } else {
-          let msg = "Matched pairs that are correct turn solid; incorrect pairs remain active.";
-          if (((m.q1 || "").startsWith("B.")) || ((m.q2 || "").startsWith("A."))) msg = "This is a major trap. True/False/Not Given is about factual information. Yes/No/Not Given is about the writer’s views or claims.";
-          else if (m.q3 && !(m.q3 || "").startsWith("C.")) msg = "Headings are about paragraph main ideas, not one small detail.";
-          else if (m.q5 && !(m.q5 || "").startsWith("E.")) msg = "Completion tasks require exact missing information and attention to word limits.";
-          setFeedback(8, "warn", msg);
-          render();
-        }
+        const ok = (m.q1 || "").startsWith("A.") && (m.q2 || "").startsWith("B.") && (m.q3 || "").startsWith("C.") && (m.q4 || "").startsWith("D.") && (m.q5 || "").startsWith("E.") && (m.q6 || "").startsWith("F.");
+        submitScreen(
+          8,
+          ok,
+          75,
+          "Watch the trap: True/False/Not Given is about factual information. Yes/No/Not Given is about the writer’s views or claims.",
+          answerRevealText(8),
+          {
+            successHtml: "Good. You are not just learning names; you are learning what each question asks your brain to do.",
+            onCorrect: n => { if (n === 1 && (m.q1 || "").startsWith("A.") && (m.q2 || "").startsWith("B.")) unlockBadge("trapSpotter"); }
+          }
+        );
       });
     }
 
@@ -2482,13 +2268,9 @@
         "B. Write a letter responding to a situation. The letter may be personal, semi-formal, or formal.",
         "C. Write an essay discussing a point of view, argument, or problem."
       ];
-      const nums = ["150", "250"];
-      const mins = ["20", "40"];
       return `
         <div class="copy-block">
           <p>Writing is 60 minutes. There are 2 tasks.</p>
-          <p>Your job: build the Writing plan.</p>
-          <p class="mini-note">XP alert: strategy fact. Task 2 is not just longer. It counts more.</p>
         </div>
         <div class="task-card question-grid">
           <h2 class="task-title">Step 1 — Match the task</h2>
@@ -2496,11 +2278,11 @@
           <label>General Training Task 1 ${selectFrom("writing", "general1", cards)}</label>
           <label>Task 2 in both versions ${selectFrom("writing", "task2", cards)}</label>
           <h2 class="task-title">Step 2 — Add word counts</h2>
-          <label>Task 1 minimum ${selectFrom("writing", "words1", nums)}</label>
-          <label>Task 2 minimum ${selectFrom("writing", "words2", nums)}</label>
+          <label>Task 1 minimum ${selectFrom("writing", "words1", ["150", "250"])}</label>
+          <label>Task 2 minimum ${selectFrom("writing", "words2", ["150", "250"])}</label>
           <h2 class="task-title">Step 3 — Spend the 60 minutes</h2>
-          <label>Recommended Task 1 time ${selectFrom("writing", "time1", mins)}</label>
-          <label>Recommended Task 2 time ${selectFrom("writing", "time2", mins)}</label>
+          <label>Recommended Task 1 time ${selectFrom("writing", "time1", ["20", "40"])}</label>
+          <label>Recommended Task 2 time ${selectFrom("writing", "time2", ["20", "40"])}</label>
           <h2 class="task-title">Step 4 — Weighting</h2>
           <label>Which task counts twice as much?${optionButtons("writing_weight", ["Task 1", "Task 2", "They count the same"])}</label>
           <button class="primary-btn" id="check10" type="button">Check Writing plan</button>
@@ -2512,26 +2294,14 @@
       bindSelects("writing");
       bindOptionGroup(document, "writing_weight");
       document.getElementById("check10").addEventListener("click", () => {
-        const n = attempt(9);
         const w = state.answers.writing || {};
         const ok = (w.academic1 || "").startsWith("A.") && (w.general1 || "").startsWith("B.") && (w.task2 || "").startsWith("C.") &&
           w.words1 === "150" && w.words2 === "250" && w.time1 === "20" && w.time2 === "40" && state.answers.writing_weight === "Task 2";
-        if (ok) {
-          let note = "";
-          if (state.answers.test_type === "Academic") note = "For you, Task 1 means visual information. Your Task 2 is still an essay.";
-          else if (state.answers.test_type === "General Training") note = "For you, Task 1 means a letter. Your Task 2 is still an essay.";
-          else note = "Once you know your test type, Task 1 is the first Writing detail to confirm.";
-          setFeedback(9, "success", `Yes. Task 1 changes by test type. Task 2 is an essay in both. Task 2 is heavier, so time management must protect it.<br><br>${note}`);
-          complete(9, n === 1 ? 85 : 75);
-        } else {
-          let msg = "Some parts of the Writing system need fixing.";
-          if ((w.academic1 || "").startsWith("B.")) msg = "That is General Training Task 1. Academic Task 1 is visual information.";
-          else if ((w.general1 || "").startsWith("A.")) msg = "That is Academic Task 1. General Training Task 1 is a letter.";
-          else if (state.answers.writing_weight && state.answers.writing_weight !== "Task 2") msg = "This is one of the most important orientation facts: Task 2 counts twice as much as Task 1.";
-          else if (w.time1 === "40" || w.time2 === "20") msg = "A common mistake is spending too long on Task 1. The recommended split is about 20 minutes for Task 1 and 40 for Task 2.";
-          setFeedback(9, "warn", msg);
-          render();
-        }
+        let note = "";
+        if (state.answers.test_type === "Academic") note = "For you, Task 1 means visual information. Your Task 2 is still an essay.";
+        else if (state.answers.test_type === "General Training") note = "For you, Task 1 means a letter. Your Task 2 is still an essay.";
+        else note = "Once you know your test type, Task 1 is the first Writing detail to confirm.";
+        submitScreen(9, ok, 85, "Check the core pattern: Academic Task 1 = visuals, General Training Task 1 = letter, Task 2 = essay. Task 2 counts twice as much.", answerRevealText(9), { successHtml: `Yes. Task 1 changes by test type. Task 2 is an essay in both. Task 2 is heavier, so time management must protect it.<br><br>${note}` });
       });
     }
 
@@ -2550,7 +2320,6 @@
         <div class="copy-block">
           <p>Speaking is short, but it is structured: 11–14 minutes, 3 parts.</p>
           <p>It is an interview or conversation with a certificated IELTS examiner, and it is recorded. Some official pages describe face-to-face Speaking; other official pages say some centres use video-call Speaking. The lesson rule: check your centre, but do not assume the scoring changes.</p>
-          <p class="mini-note">XP challenge: Build the speaking ladder. Part 1 is familiar. Part 2 is extended. Part 3 goes abstract.</p>
         </div>
         <div class="task-card question-grid">
           ${["part1","part2","part3"].map((k, idx) => `
@@ -2568,23 +2337,13 @@
     function bind11() {
       bindSelects("speaking");
       document.getElementById("check11").addEventListener("click", () => {
-        const n = attempt(10);
         const s = state.answers.speaking || {};
         const ok = (s.part1_format || "").startsWith("A.") && (s.part1_skill || "").startsWith("D.") &&
           (s.part2_format || "").startsWith("B.") && (s.part2_skill || "").startsWith("E.") &&
           (s.part3_format || "").startsWith("C.") && (s.part3_skill || "").startsWith("F.");
-        if (ok) {
-          let msg = "Good. Speaking moves from familiar questions to a prepared long turn to a more abstract discussion.";
-          if (/speaking/i.test(state.answers.worry || "")) msg += "<br><br>Earlier, you said Speaking felt uncertain. Your first anchor is simple: familiar → long turn → abstract.";
-          setFeedback(10, "success", msg);
-          complete(10, n === 1 ? 75 : 65);
-        } else {
-          let msg = "Think of the mental demand: everyday information, then organised long speaking, then analysis/speculation.";
-          if (s.part2_format && !(s.part2_format || "").startsWith("B.")) msg = "Part 2 is the long turn: task card, preparation time, then extended speaking.";
-          else if ((s.part3_format || "").startsWith("A.")) msg = "Part 3 is linked to Part 2 but becomes more general and abstract.";
-          setFeedback(10, "warn", msg);
-          render();
-        }
+        let msg = "Good. Speaking moves from familiar questions to a prepared long turn to a more abstract discussion.";
+        if (/speaking/i.test(state.answers.worry || "")) msg += "<br><br>Earlier, you said Speaking felt uncertain. Your first anchor is simple: familiar → long turn → abstract.";
+        submitScreen(10, ok, 75, "Think of the mental demand: everyday information, then organised long speaking, then analysis/speculation.", answerRevealText(10), { successHtml: msg });
       });
     }
 
@@ -2604,15 +2363,14 @@
       return `
         <div class="copy-block">
           <p>The documents agree on the broad principle: content, question types, and scoring are the same. The practical experience is different.</p>
-          <p class="mini-note">Mode round: same exam, different muscle memory. Some cards are not “paper” or “computer.” Some are “check your provider.”</p>
         </div>
         <div class="task-card">
           ${cardPool(cards, p)}
           <div class="tray-grid">
-            ${trayHtml("paper", "Tray A: Paper", cards, p)}
-            ${trayHtml("computer", "Tray B: Computer", cards, p)}
-            ${trayHtml("same", "Tray C: Same in both", cards, p)}
-            ${trayHtml("check", "Tray D: Check your provider / centre", cards, p)}
+            ${trayHtml("paper", "Paper", cards, p)}
+            ${trayHtml("computer", "Computer", cards, p)}
+            ${trayHtml("same", "Same in both", cards, p)}
+            ${trayHtml("check", "Check your provider / centre", cards, p)}
           </div>
           <button class="primary-btn" id="check12" type="button">Check paper/computer sort</button>
         </div>
@@ -2623,46 +2381,24 @@
       const cards = Array.from({length:9}, (_, i) => ({id:String(i+1), label:String(i+1)}));
       bindPlacement(cards, "mode_sort", true);
       document.getElementById("check12").addEventListener("click", () => {
-        const n = attempt(11);
         const p = state.answers.mode_sort || {};
         const eq = (key, arr) => [...(p[key] || [])].sort().join(",") === arr.sort().join(",");
         const ok = eq("paper", ["1","4"]) && eq("computer", ["2","7"]) && eq("same", ["3","6"]) && eq("check", ["5","8","9"]);
-        if (ok) {
-          let note = "";
-          if (state.answers.delivery_mode === "Computer") note = "Your mode is computer. Your practical training should include typing, screen navigation, and on-screen review habits.";
-          else if (state.answers.delivery_mode === "Paper") note = "Your mode is paper. Your practical training should include answer-sheet discipline and transfer timing.";
-          else note = "Your next real-world task is to confirm your provider and delivery mode before building habits.";
-          setFeedback(11, "success", `Excellent. You can now separate exam content from test-day mechanics.<br><br>${note}`);
-          if (n <= 2) unlockBadge("modeHacker");
-          complete(11, n <= 2 ? 90 : 75);
-        } else {
-          let msg = "Correct cards lock; incorrect cards remain movable.";
-          if ((p.paper || []).includes("3") || (p.computer || []).includes("3")) msg = "No. The documents state that content, question types, and scoring are the same across paper and computer.";
-          else if (![...(p.check || [])].includes("5") && Object.values(p).flat().includes("5")) msg = "Careful. The documents report official-source disagreement here. Your safest action is to check your own provider/centre.";
-          else if (![...(p.check || [])].includes("8") && Object.values(p).flat().includes("8")) msg = "Not safe. Some official pages still say face-to-face, but others mention video-call Speaking at some centres.";
-          else if (![...(p.check || [])].includes("9") && Object.values(p).flat().includes("9")) msg = "Not safe. The documents describe transition language and availability differences. Check country and provider.";
-          setFeedback(11, "warn", msg);
-          render();
-        }
+        let note = "";
+        if (state.answers.delivery_mode === "Computer") note = "Your mode is computer. Your practical training should include typing, screen navigation, and on-screen review habits.";
+        else if (state.answers.delivery_mode === "Paper") note = "Your mode is paper. Your practical training should include answer-sheet discipline and transfer timing.";
+        else note = "Your next real-world task is to confirm your provider and delivery mode before building habits.";
+        submitScreen(11, ok, 90, "Separate content from interface. Content, question types, and scoring are the same; some practical details must be checked with the provider or centre.", answerRevealText(11), { successHtml: `Excellent. You can now separate exam content from test-day mechanics.<br><br>${note}`, onCorrect: n => { if (n <= 2) unlockBadge("modeHacker"); } });
       });
     }
 
     function screen13() {
-      const criteria = [
-        "Task achievement / response",
-        "Coherence and cohesion",
-        "Lexical resource",
-        "Grammatical range and accuracy",
-        "Fluency and coherence",
-        "Pronunciation"
-      ];
+      const criteria = ["Task achievement / response","Coherence and cohesion","Lexical resource","Grammatical range and accuracy","Fluency and coherence","Pronunciation"];
       const c = state.answers.criteria || {};
       return `
         <div class="copy-block">
           <p>IELTS has no pass or fail. You receive band scores for Listening, Reading, Writing, and Speaking, plus an Overall Band Score.</p>
-          <p>Listening and Reading: raw scores are converted to the 9-band scale. Writing and Speaking: examiners rate performance using criteria.</p>
           <p>Overall Band Score: average the four section bands, then round using the IELTS rules.</p>
-          <p class="mini-note">XP note: This is scoring logic practice, not your IELTS result. You are learning how the Overall Band Score is calculated.</p>
         </div>
         <div class="task-card question-grid">
           <h2 class="task-title">Calculation 1</h2>
@@ -2698,9 +2434,7 @@
         });
       });
       document.getElementById("check13").addEventListener("click", () => {
-        const n = attempt(12);
-        const firstCalcs = state.answers.calc1 === "6.5" && state.answers.calc2 === "7.0";
-        if (n === 1 && firstCalcs) state.flags.firstCalc13 = true;
+        const calcsOk = state.answers.calc1 === "6.5" && state.answers.calc2 === "7.0";
         const c = state.answers.criteria || {};
         const expected = {
           "Task achievement / response": {writing:true, speaking:false},
@@ -2711,19 +2445,7 @@
           "Pronunciation": {writing:false, speaking:true}
         };
         const critOk = Object.keys(expected).every(k => !!c[k]?.writing === expected[k].writing && !!c[k]?.speaking === expected[k].speaking);
-        const ok = firstCalcs && critOk;
-        if (ok) {
-          if (state.flags.firstCalc13) unlockBadge("roundingHacker");
-          setFeedback(12, "success", "Yes. A .25 average rounds up to the next half band. A .75 average rounds up to the next whole band.");
-          complete(12, state.flags.firstCalc13 ? 85 : 75);
-        } else {
-          let msg = "Correct calculations remain checked; criteria cards can be moved until correct.";
-          if (state.answers.calc1 === "6.0") msg = "Not according to the public scoring rule in the documents. 6.25 rounds up to 6.5.";
-          else if (state.answers.calc2 === "6.5") msg = "Not according to the public scoring rule in the documents. 6.75 rounds up to 7.0.";
-          else if (!critOk) msg = "Writing is judged by task achievement/response, coherence and cohesion, lexical resource, and grammatical range and accuracy. Speaking is judged by fluency and coherence, lexical resource, grammatical range and accuracy, and pronunciation.";
-          setFeedback(12, "warn", msg);
-          render();
-        }
+        submitScreen(12, calcsOk && critOk, 85, "Use the rule: .25 rounds up to the next half band; .75 rounds up to the next whole band. Then sort Writing and Speaking criteria carefully.", answerRevealText(12), { successHtml: "Yes. A .25 average rounds up to the next half band. A .75 average rounds up to the next whole band.", onCorrect: n => { if (n === 1 && calcsOk) unlockBadge("roundingHacker"); } });
       });
     }
 
@@ -2745,7 +2467,6 @@
         <div class="copy-block">
           <p>You now know enough to challenge bad advice.</p>
           <p>Mark each statement: True, False, or Check provider / centre.</p>
-          <p class="mini-note">Rumour filter round. Bad advice sounds confident. Your job is to check it against the actual exam map.</p>
         </div>
         <div class="task-card question-grid">
           ${statements.map((s, idx) => `
@@ -2775,36 +2496,14 @@
         });
       });
       document.getElementById("check14").addEventListener("click", () => {
-        const n = attempt(13);
         const r = state.answers.rumours || {};
         const okOne = k => {
           if (k === 6) return r[6] === "False" || r[6] === "Check provider / centre";
           const ans = {1:"False",2:"False",3:"True",4:"False",5:"True",7:"False",8:"True",9:"Check provider / centre"}[k];
           return r[k] === ans;
         };
-        if (n === 1 && okOne(1) && okOne(2) && okOne(6) && okOne(7) && !state.badges.trapSpotter) {
-          unlockBadge("trapSpotter", "You filtered the rumours before they became study habits.");
-        }
         const ok = [1,2,3,4,5,6,7,8,9].every(okOne);
-        if (ok) {
-          setFeedback(13, "success", "Nice. You filtered the rumours before they became study habits.");
-          complete(13, 90);
-        } else {
-          const explanations = {
-            1:"Listening and Speaking are the same in Academic and General Training. Reading and Writing differ.",
-            2:"Reading has no extra transfer time. On paper, answer transfer must happen inside the 60 minutes.",
-            3:"Task 2 carries double weight.",
-            4:"The documents say content, question types, and scoring are the same; the practical interface changes.",
-            5:"The documents describe Speaking as same day or near the main test day, depending on local arrangements.",
-            6:"Some official pages still describe face-to-face Speaking, but others mention video-call Speaking at some centres.",
-            7:"The documents explicitly flag differences in official wording about computer Listening wrap-up.",
-            8:"Correct strategy: check provider and country.",
-            9:"One Skill Retake is a logistics/eligibility issue. The documents connect it to computer-delivered testing and a limited booking window, so students must check eligibility."
-          };
-          const firstWrong = [1,2,3,4,5,6,7,8,9].find(k => r[k] && !okOne(k)) || [1,2,3,4,5,6,7,8,9].find(k => !r[k]);
-          setFeedback(13, "warn", firstWrong ? explanations[firstWrong] : "Choose a diagnosis for every statement.");
-          render();
-        }
+        submitScreen(13, ok, 90, "Filter the rumours through the exam map. Listening/Speaking are shared; Reading has no extra transfer time; computer is not a different academic exam; provider details must be checked.", answerRevealText(13), { successHtml: "Nice. You filtered the rumours before they became study habits.", beforeDecision: (isCorrect, n) => { if (n === 1 && okOne(1) && okOne(2) && okOne(6) && okOne(7) && !state.badges.trapSpotter) unlockBadge("trapSpotter", "You filtered the rumours before they became study habits."); } });
       });
     }
 
@@ -2824,19 +2523,15 @@
           <p><strong>My lesson goal was:</strong> “${esc(a.opening_goal || "Not saved yet")}”</p>
           <p><strong>My priority challenge was:</strong> ${esc(a.priority_challenge || "Not saved yet")}</p>
           <p><strong>My reason was:</strong> “${esc(a.priority_reason || "Not saved yet")}”</p>
-          <p>You also started with this:</p>
           <p><strong>Your likely test type:</strong> ${esc(a.test_type || "Not saved yet")}<br><strong>Your likely delivery mode:</strong> ${esc(a.delivery_mode || "Not saved yet")}<br><strong>Your reason:</strong> ${esc(a.purpose || "Not saved yet")}<br><strong>Your uncertainty:</strong> “${esc(a.worry || "Not saved yet")}”</p>
-          <p class="mini-note">Final XP challenge before results. First write your own IELTS map. Then press Submit to reveal the expert map and compare. Forward unlocks after you write five complete short sentences and view the model answer.</p>
+          <p class="mini-note">Write your own IELTS map. Then press Submit to reveal the expert map and compare.</p>
         </div>
         <div class="task-card question-grid">
           <h2 class="task-title">Now finish the lesson by writing your own IELTS map.</h2>
           <p class="hint">Each answer only needs to be a complete short sentence — roughly 4 or more words with a verb. Do not write single words or fragments.</p>
-          ${fields.map(([key,label]) => `
-            <label>${label}<textarea data-map-field="${key}">${esc(getAnswer(key, ""))}</textarea></label>
-          `).join("")}
+          ${fields.map(([key,label]) => `<label>${label}<textarea data-map-field="${key}">${esc(getAnswer(key, ""))}</textarea></label>`).join("")}
           <button class="primary-btn" id="check15" type="button">Submit my IELTS map</button>
         </div>
-        ${state.flags.mapSubmitted ? modelAnswerHtml() : ""}
       `;
     }
 
@@ -2866,7 +2561,6 @@
             <div class="comparison-item ${checks.item2 ? "ok" : "check"}">${checks.item2 ? "✓" : "Compare:"} Item 2 should include Listening → Reading → Writing and separate Speaking scheduling.</div>
             <div class="comparison-item ${checks.item4 ? "ok" : "check"}">${checks.item4 ? "✓" : "Compare:"} Item 4 should be operational: typing, screen navigation, transfer time, answer sheets, Speaking delivery, paper availability, or checking provider/centre instructions.</div>
           </div>
-          <p class="hint">This comparison is not a barrier. Your forward arrow unlocks because you wrote five complete sentences and viewed the model answer.</p>
         </div>
       `;
     }
@@ -2876,31 +2570,29 @@
         t.addEventListener("input", () => setAnswer(t.dataset.mapField, t.value));
       });
       document.getElementById("check15").addEventListener("click", () => {
-        attempt(14);
         const a = state.answers;
         const vals = [1,2,3,4,5].map(n => a[`map${n}`] || "");
-        const full = vals.every(v => isCompleteShortSentence(v));
-        if (!full) {
-          setFeedback(14, "warn", "Write full sentences. You are building the explanation you will use when planning your study. Short is fine — but avoid single words or fragments.");
-          render();
-          return;
-        }
-
+        const allSentences = vals.every(v => isCompleteShortSentence(v));
         const checks = mapKeyChecks();
-        const earned = 10 + (checks.item1 ? 15 : 0) + (checks.item2 ? 15 : 0) + 15 + (checks.item4 ? 15 : 0) + 15;
         const mapmaker = checks.item1 && checks.item2 && checks.item4;
 
-        state.flags.mapSubmitted = true;
-        saveState();
-
-        if (mapmaker) {
-          setFeedback(14, "success", "Good. You have a working IELTS map, not just a list of facts. Compare it with the expert map below.");
-          unlockBadge("mapmaker");
-        } else {
-          setFeedback(14, "info", "Your IELTS map is saved, and the forward arrow is unlocked. Some key IELTS ideas may be missing, so compare your answer with the expert map below before you go to the result screen.");
-        }
-
-        complete(14, earned);
+        submitScreen(
+          14,
+          allSentences,
+          85,
+          "Write full sentences. Short is fine — but avoid single words or fragments.",
+          "The model IELTS map is shown below. Forward is unlocked so you can continue after reviewing it.",
+          {
+            revealOnCorrect: true,
+            onReveal: () => { state.flags.reveal_14 = true; saveState(); },
+            successHtml: mapmaker ? "Good. You have a working IELTS map, not just a list of facts. Compare it with the expert map below." : "Your IELTS map is saved. Compare your answer with the expert map below before you go to the result screen.",
+            onCorrect: () => {
+              state.flags.reveal_14 = true;
+              if (mapmaker) unlockBadge("mapmaker");
+              saveState();
+            }
+          }
+        );
       });
     }
 
@@ -2908,29 +2600,25 @@
       const title = currentTitle();
       const xp = totalXp();
       const unlocked = badgeOrder.filter(k => state.badges[k]);
-      const locked = badgeOrder.filter(k => !state.badges[k]);
-      return `
-        <div class="copy-block">
-          <p><strong>You completed Lesson 1.</strong></p>
-          <p>Before the result appears, one clear reminder:</p>
-          <p class="mini-note">This is not an IELTS band score. Your XP shows how actively you worked through this lesson — predictions, sorting, calculations, corrections, and reflection. It does not predict your real IELTS result.</p>
-        </div>
+      const name = studentName();
 
+      return `
         <div class="result-panel">
           <div class="result-hero">
+            <p class="result-name">Well done, ${esc(name)}!</p>
             <h2>${esc(title)}</h2>
             <p>${esc(titleCopy(title))}</p>
             <div class="result-stats">
               <div class="stat-box"><div class="stat-label">Your XP</div><div class="stat-value">${xp}/1100</div></div>
-              <div class="stat-box"><div class="stat-label">Badges unlocked</div><div class="stat-value">${unlocked.length}/5</div></div>
             </div>
           </div>
 
-          <div class="task-card">
-            <h2 class="task-title">Unlocked badges</h2>
-            <div class="badge-wall">${unlocked.length ? unlocked.map(badgeChip).join("") : `<p class="hint">No badges unlocked yet. Replay tricky screens when you want to sharpen the details.</p>`}</div>
-            ${locked.length ? `<h2 class="task-title">Still locked</h2><div class="badge-wall">${locked.map(k => badgeChip(k, true)).join("")}</div>` : ""}
-          </div>
+          ${unlocked.length ? `
+            <div class="task-card">
+              <h2 class="task-title">Earned badges</h2>
+              <div class="badge-wall">${unlocked.map(badgeChip).join("")}</div>
+            </div>
+          ` : ""}
 
           <div class="task-card copy-block">
             <h2 class="task-title">Nice work.</h2>
@@ -2954,23 +2642,23 @@
             ${state.ui.finished ? `<div class="feedback success">Lesson complete. Your IELTS map is saved.</div>` : ""}
           </div>
 
-          ${state.ui.shareOpen ? shareCard(title, xp, unlocked) : ""}
+          ${state.ui.shareOpen ? shareCard(title, xp, unlocked, name) : ""}
           ${state.ui.trickyOpen ? trickyList() : ""}
         </div>
       `;
     }
 
-    function badgeChip(k, locked = false) {
+    function badgeChip(k) {
       const b = badgeMeta[k];
       return `
-        <div class="badge-chip ${locked ? "locked" : ""}">
+        <div class="badge-chip">
           <span class="badge-icon" style="background:${b.color}">${b.icon}</span>
-          <span>${esc(b.name)}${locked ? `<br><span class="hint">Try again later</span>` : ""}</span>
+          <span>${esc(b.name)}</span>
         </div>
       `;
     }
 
-    function shareCard(title, xp, unlocked) {
+    function shareCard(title, xp, unlocked, name) {
       return `
         <div class="share-wrap" id="shareCardWrap">
           <div class="share-card">
@@ -2980,13 +2668,10 @@
             </div>
             <div class="share-main">
               <div class="share-kicker">IELTS ORIENTATION COMPLETE</div>
+              <div class="share-name">Well done, ${esc(name)}!</div>
               <div class="share-title">${esc(title)}</div>
               <div class="share-xp">${xp}/1100 XP</div>
-              <div class="share-disclaimer">Engagement XP — not an IELTS band score</div>
-              <div><strong>Badges unlocked: ${unlocked.length}/5</strong></div>
-              <div class="share-badges">
-                ${unlocked.length ? unlocked.map(k => `<span class="share-badge">${badgeMeta[k].icon} ${esc(badgeMeta[k].name)}</span>`).join("") : `<span class="share-badge">No badges yet</span>`}
-              </div>
+              ${unlocked.length ? `<div class="share-badges">${unlocked.map(k => `<span class="share-badge">${badgeMeta[k].icon} ${esc(badgeMeta[k].name)}</span>`).join("")}</div>` : ""}
             </div>
             <div class="share-footer">
               I built my IELTS exam map.<br>
@@ -3000,14 +2685,9 @@
 
     function trickyList() {
       const tricky = [];
-      for (let i = 3; i <= 12; i++) {
-        if ((state.attempts[i] || 0) > 1) tricky.push(i);
+      for (let i = 0; i <= 14; i++) {
+        if ((state.attempts[i] || 0) > 1 || state.xp[i] === 0) tricky.push(i);
       }
-      if (!state.badges.firstInstinct) tricky.push(5);
-      if (!state.badges.trapSpotter) tricky.push(8, 13);
-      if (!state.badges.modeHacker) tricky.push(11);
-      if (!state.badges.roundingHacker) tricky.push(12);
-      if (!state.badges.mapmaker) tricky.push(14);
       const unique = [...new Set(tricky)].filter(i => i >= 0 && i < 15);
       return `
         <div class="task-card">
@@ -3017,7 +2697,7 @@
               <div class="rank-num">${i + 1}</div>
               <div>
                 <div class="rank-title">${esc(screenTitles[i])}</div>
-                <div class="rank-desc">Review this screen to sharpen the details. XP and first-try bonuses do not reset.</div>
+                <div class="rank-desc">Review this screen to sharpen the details. XP and attempt status do not reset.</div>
               </div>
               <button class="small-btn" data-jump="${i}" type="button">Open</button>
             </div>
@@ -3030,23 +2710,27 @@
       const toggleShare = document.getElementById("toggleShare");
       const finish = document.getElementById("finishLesson");
       const tricky = document.getElementById("toggleTricky");
+
       if (toggleShare) toggleShare.addEventListener("click", () => {
         state.ui.shareOpen = !state.ui.shareOpen;
         saveState();
         render();
         setTimeout(() => document.getElementById("shareCardWrap")?.scrollIntoView({behavior:"smooth", block:"center"}), 80);
       });
+
       if (finish) finish.addEventListener("click", () => {
         state.ui.finished = true;
         saveState();
         toast("<strong>Lesson complete.</strong><span>Your IELTS map is saved.</span>");
         render();
       });
+
       if (tricky) tricky.addEventListener("click", () => {
         state.ui.trickyOpen = !state.ui.trickyOpen;
         saveState();
         render();
       });
+
       document.querySelectorAll("[data-jump]").forEach(btn => {
         btn.addEventListener("click", () => goTo(Number(btn.dataset.jump)));
       });
@@ -3063,6 +2747,23 @@
       history.replaceState({ screen: state.screen, dev: true }, "", `#dev-screen-${state.screen + 1}`);
       toast("<strong>DEV MODE ON</strong><span>Using isolated developer state.</span>");
       render();
+    }
+
+    function disableDevMode() {
+      if (!devMode) return;
+      const currentScreen = state.screen;
+      devMode = false;
+      state = loadState();
+      state.screen = currentScreen;
+      saveState();
+      history.replaceState({ screen: state.screen, dev: false }, "", `#screen-${state.screen + 1}`);
+      toast("<strong>DEV MODE OFF</strong><span>Student state restored.</span>");
+      render();
+    }
+
+    function toggleDevMode() {
+      if (devMode) disableDevMode();
+      else enableDevMode();
     }
 
     function renderDevPanel() {
@@ -3091,6 +2792,7 @@
             <span>Max XP + all badges</span>
           </label>
           <button class="dev-danger" id="devReset" type="button">Reset all</button>
+          <button id="devOff" type="button">Turn dev mode off</button>
         </div>
       `;
 
@@ -3101,6 +2803,7 @@
       document.getElementById("devFill").addEventListener("click", fillDevTestData);
       document.getElementById("devMaxToggle").addEventListener("change", e => setDevMax(e.target.checked));
       document.getElementById("devReset").addEventListener("click", resetDevState);
+      document.getElementById("devOff").addEventListener("click", disableDevMode);
     }
 
     function fillDevTestData() {
@@ -3108,8 +2811,9 @@
 
       state.answers = {
         ...state.answers,
+        student_name: "Aruzhan",
         opening_prediction: "Time management",
-        opening_goal: "I want to understand IELTS clearly before I start practice.",
+        opening_goal: "I want to understand IELTS clearly before practice.",
         agenda_order: ["timing","types","brain","mode","score","day","rumours"],
         priority_challenge: "How much time do I really have?",
         priority_reason: "Because I need to know where time pressure happens.",
@@ -3189,7 +2893,7 @@
         map5: "My Speaking worry changes because I now know the speaking test has three clear parts."
       };
 
-      state.flags.mapSubmitted = true;
+      state.flags.reveal_14 = true;
       state.feedback[14] = {
         type: "success",
         html: "Good. You have a working IELTS map, not just a list of facts. Compare it with the expert map below."
@@ -3215,9 +2919,7 @@
         }
 
         state.xp = {};
-        xpMax.forEach((xp, i) => {
-          if (xp > 0) state.xp[i] = xp;
-        });
+        xpMax.forEach((xp, i) => { if (xp > 0) state.xp[i] = xp; });
 
         state.completed = {};
         for (let i = 0; i <= 14; i++) state.completed[i] = true;
@@ -3253,6 +2955,7 @@
     }
 
     function confetti() {
+      if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
       const colors = ["#3B44B5","#29A768","#F3AB63","#F4CF80","#F06C6A","#E070A3","#C2598E","#913371","#5C3E9B","#BCDC6E"];
       for (let i = 0; i < 60; i++) {
         const piece = document.createElement("div");
@@ -3296,20 +2999,31 @@
         dPresses.push(now);
         if (dPresses.length >= 3) {
           dPresses = [];
-          enableDevMode();
+          toggleDevMode();
         }
       } else {
         dPresses = [];
       }
     });
 
+    document.getElementById("brandTap").addEventListener("click", () => {
+      const now = Date.now();
+      logoTaps = logoTaps.filter(t => now - t < 1400);
+      logoTaps.push(now);
+      if (logoTaps.length >= 5) {
+        logoTaps = [];
+        toggleDevMode();
+      }
+    });
+
     window.addEventListener("hashchange", () => {
-      if (isDevHash() && !devMode) enableDevMode();
+      if (hashWantsDev() && !devMode) enableDevMode();
     });
 
     window.addEventListener("popstate", ev => {
       const s = ev.state?.screen;
       if (typeof s === "number") {
+        if (ev.state?.dev && !devMode) enableDevMode();
         state.screen = s;
         saveState();
         render();
@@ -3319,8 +3033,10 @@
     if (devMode) {
       state.flags.devModeOn = true;
       saveState();
-      history.replaceState({ screen: state.screen, dev: true }, "", `#dev-screen-${state.screen + 1}`);
-    } else {
+      if (location.hash === "#dev") {
+        history.replaceState({ screen: state.screen, dev: true }, "", `#dev-screen-${state.screen + 1}`);
+      }
+    } else if (!location.hash.startsWith("#screen-")) {
       history.replaceState({ screen: state.screen, dev: false }, "", `#screen-${state.screen + 1}`);
     }
 
