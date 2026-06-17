@@ -1,4 +1,4 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -1308,9 +1308,9 @@
 
     <nav class="nav-shell" aria-label="Lesson navigation">
       <div class="nav-inner">
-        <button class="arrow-btn" id="backBtn" type="button" aria-label="Back">←</button>
+        <button class="arrow-btn" id="backBtn" type="button" aria-label="Back">в†ђ</button>
         <div class="nav-msg" id="navMsg">Finish the thinking task to unlock forward.</div>
-        <button class="arrow-btn locked" id="nextBtn" type="button" aria-label="Next" title="Finish the thinking task to unlock forward.">→</button>
+        <button class="arrow-btn locked" id="nextBtn" type="button" aria-label="Next" title="Finish the thinking task to unlock forward.">в†’</button>
       </div>
     </nav>
   </div>
@@ -1330,21 +1330,21 @@
     let devMode = hashWantsDev();
 
     const badgeMeta = {
-      firstInstinct: { name: "First Instinct", icon: "⚡", color: "var(--pink)", text: "You made a prediction before the reveal — and your exam map was sharp." },
-      trapSpotter: { name: "Trap Spotter", icon: "🕵️", color: "var(--magenta)", text: "You caught one of the classic IELTS confusion traps before it caught you." },
-      modeHacker: { name: "Mode Hacker", icon: "💻", color: "var(--violet)", text: "You separated the exam from the interface. That is how smart test-takers prepare." },
-      roundingHacker: { name: "Rounding Hacker", icon: "🎯", color: "var(--plum)", text: "You calculated the score rule instead of guessing. Clean." },
-      mapmaker: { name: "Mapmaker", icon: "🗺️", color: "var(--lime)", text: "You turned IELTS facts into your own study map." }
+      firstInstinct: { name: "First Instinct", icon: "вљЎ", color: "var(--pink)", text: "You made a prediction before the reveal вЂ” and your exam map was sharp." },
+      trapSpotter: { name: "Trap Spotter", icon: "рџ•µпёЏ", color: "var(--magenta)", text: "You caught one of the classic IELTS confusion traps before it caught you." },
+      modeHacker: { name: "Mode Hacker", icon: "рџ’»", color: "var(--violet)", text: "You separated the exam from the interface. That is how smart test-takers prepare." },
+      roundingHacker: { name: "Rounding Hacker", icon: "рџЋЇ", color: "var(--plum)", text: "You calculated the score rule instead of guessing. Clean." },
+      mapmaker: { name: "Mapmaker", icon: "рџ—єпёЏ", color: "var(--lime)", text: "You turned IELTS facts into your own study map." }
     };
 
     const badgeOrder = ["firstInstinct", "trapSpotter", "modeHacker", "roundingHacker", "mapmaker"];
 
     const agendaCards = [
-      { id: "types", title: "Which IELTS am I actually preparing for?", desc: "Academic or General Training — and what really changes?", screen: 4 },
+      { id: "types", title: "Which IELTS am I actually preparing for?", desc: "Academic or General Training вЂ” and what really changes?", screen: 4 },
       { id: "day", title: "What happens on test day?", desc: "Which sections come first, and where does Speaking fit?", screen: 3 },
       { id: "timing", title: "How much time do I really have?", desc: "What are the timings, question counts, tasks, parts, and sections?", screen: 5 },
       { id: "brain", title: "What does each section ask my brain to do?", desc: "Listening, Reading, Writing, and Speaking are not the same kind of challenge.", screen: [6,7,8,9,10] },
-      { id: "mode", title: "Paper or computer: what changes?", desc: "Same exam content, different practical experience — and some details depend on your provider or centre.", screen: 11 },
+      { id: "mode", title: "Paper or computer: what changes?", desc: "Same exam content, different practical experience вЂ” and some details depend on your provider or centre.", screen: 11 },
       { id: "score", title: "How does scoring work?", desc: "What is a band score, what is rounding, and why XP in this module is not a real IELTS result?", screen: 12 },
       { id: "rumours", title: "Which IELTS rumours are dangerous?", desc: "What should I stop believing before I start serious practice?", screen: 13 }
     ];
@@ -1362,7 +1362,7 @@
       "Writing: Two Tasks, Unequal Weight",
       "Speaking: From Familiar to Abstract",
       "Paper vs Computer: Same Test, Different Muscle Memory",
-      "Scoring: Calculate, Don’t Guess",
+      "Scoring: Calculate, DonвЂ™t Guess",
       "IELTS Rumour Filter",
       "Your Personal IELTS Map",
       "Your IELTS Orientation Result"
@@ -1372,13 +1372,13 @@
       "Before you practise random tasks, build the map. Type your name and make one honest prediction first.",
       "Choose what you most want to understand. Your priority will return later.",
       "Start with what you think is true now. Not sure is a valid answer.",
-      "Build the route: hear first, read second, write third — and place Speaking carefully.",
+      "Build the route: hear first, read second, write third вЂ” and place Speaking carefully.",
       "Academic and General are not four different tests. Sort the skills by what really changes.",
       "Guess first. Then replace rumours with a usable exam map.",
       "Track the climb from everyday listening to academic listening.",
       "Same clock. Different text world. Watch the transfer-time trap.",
       "A question type is a command. Match the label to the thinking job.",
-      "Build the Writing system. Task 2 is not just longer — it counts more.",
+      "Build the Writing system. Task 2 is not just longer вЂ” it counts more.",
       "Part 1 is familiar. Part 2 is extended. Part 3 becomes abstract.",
       "Same exam content, different muscle memory. Some details must be checked locally.",
       "Calculate the scoring rule. XP here is practice for the scoring logic.",
@@ -1458,7 +1458,7 @@
       ];
       if (verbWords.some(v => new RegExp(`\\b${v}\\b`, "i").test(text))) return true;
       if (/\b\w+(ing|ed)\b/i.test(text)) return true;
-      if (/\b(i'm|you're|he's|she's|it's|we're|they're|i’ll|i'd|i’ve|don't|doesn't|can't|won't)\b/i.test(text)) return true;
+      if (/\b(i'm|you're|he's|she's|it's|we're|they're|iвЂ™ll|i'd|iвЂ™ve|don't|doesn't|can't|won't)\b/i.test(text)) return true;
       return false;
     }
 
@@ -1535,7 +1535,7 @@
 
       if (n === 1) {
         state.flags.tryAgainScreen = i;
-        setFeedback(i, "warn", `${hintHtml}<br><br><strong>You've got one more attempt — fix it to continue.</strong>`);
+        setFeedback(i, "warn", `${hintHtml}<br><br><strong>You've got one more attempt вЂ” fix it to continue.</strong>`);
         saveState();
         render();
         return;
@@ -1595,8 +1595,8 @@
 
     function titleCopy(title) {
       const map = {
-        "IELTS Map Reader": "You have started building the exam map. You now know IELTS is not one big mystery task — it has a structure, a sequence, and rules you can learn. Replay the trickier screens when you want to sharpen the details.",
-        "IELTS Navigator": "You can follow the exam route: test types, section order, timings, and the main paper/computer differences. You are not just “doing IELTS prep” now — you know what kind of exam you are preparing for.",
+        "IELTS Map Reader": "You have started building the exam map. You now know IELTS is not one big mystery task вЂ” it has a structure, a sequence, and rules you can learn. Replay the trickier screens when you want to sharpen the details.",
+        "IELTS Navigator": "You can follow the exam route: test types, section order, timings, and the main paper/computer differences. You are not just вЂњdoing IELTS prepвЂќ now вЂ” you know what kind of exam you are preparing for.",
         "IELTS Strategist": "You spotted important patterns: Reading and Writing change by test type, Task 2 carries more weight, Reading has no extra transfer time, and scoring follows a calculation rule. That is strategy, not luck.",
         "IELTS Systems Hacker": "You saw the system behind the exam. You separated facts from rumours, stable rules from centre-specific details, and IELTS scoring from engagement XP. That is exactly how serious preparation starts."
       };
@@ -1622,7 +1622,7 @@
       next.disabled = !canGoNext;
       next.classList.toggle("locked", !canGoNext);
       next.classList.toggle("next-ready", canGoNext);
-      next.textContent = canGoNext ? "Next →" : "→";
+      next.textContent = canGoNext ? "Next в†’" : "в†’";
       next.title = canGoNext ? "Next" : "Finish the thinking task to unlock forward.";
 
       if (state.screen === 15) {
@@ -1633,7 +1633,7 @@
       } else if (canGoNext) {
         msg.textContent = "Forward unlocked. Your answer is saved.";
       } else if ((state.attempts[state.screen] || 0) === 1) {
-        msg.textContent = "You've got one more attempt — fix it to continue.";
+        msg.textContent = "You've got one more attempt вЂ” fix it to continue.";
       } else {
         msg.textContent = "Finish the thinking task to unlock forward.";
       }
@@ -1667,6 +1667,24 @@
               onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');"
             ></video>
             <img class="guide-fallback-img hidden" src="Welcome.png" alt="IELTS guide character">
+          </div>
+        `;
+      }
+
+      if (i === 15 && !state.ui.trickyOpen) {
+        return `
+          <div class="guide-media-frame" aria-label="IELTS guide celebrating">
+            <video
+              class="guide-video"
+              src="guide-celebrate.mp4"
+              autoplay
+              loop
+              muted
+              playsinline
+              poster="Celebration.png"
+              onerror="this.classList.add('hidden');this.nextElementSibling.classList.remove('hidden');"
+            ></video>
+            <img class="guide-fallback-img hidden" src="Celebration.png" alt="IELTS guide character celebrating">
           </div>
         `;
       }
@@ -1764,7 +1782,7 @@
         <div class="priority-banner">
           <strong>Your priority topic is here.</strong><br>
           You chose this earlier: ${esc(card.title)}<br>
-          Reason: “${esc(state.answers.priority_reason || "")}”
+          Reason: вЂњ${esc(state.answers.priority_reason || "")}вЂќ
         </div>
       `;
     }
@@ -1809,15 +1827,15 @@
 
     function answerRevealText(i) {
       const reveals = {
-        0: `<h3>Model answer</h3><ul><li>Type your name or nickname, choose one prediction, and write a short complete goal sentence such as: “I want to understand IELTS before practice.”</li></ul>`,
-        1: `<h3>Model answer</h3><ul><li>Put your most important challenge at the top, then write one short reason, for example: “Because I need to understand the timing.”</li></ul>`,
-        2: `<h3>Model answer</h3><ul><li>Choose the options that best describe you. If you are unsure, “Not sure yet” is acceptable. Write one complete uncertainty sentence.</li></ul>`,
-        3: `<h3>Correct test-day route</h3><ul><li>Main block: Listening → Reading → Writing.</li><li>Separate slot: Speaking.</li></ul>`,
+        0: `<h3>Model answer</h3><ul><li>Type your name or nickname, choose one prediction, and write a short complete goal sentence such as: вЂњI want to understand IELTS before practice.вЂќ</li></ul>`,
+        1: `<h3>Model answer</h3><ul><li>Put your most important challenge at the top, then write one short reason, for example: вЂњBecause I need to understand the timing.вЂќ</li></ul>`,
+        2: `<h3>Model answer</h3><ul><li>Choose the options that best describe you. If you are unsure, вЂњNot sure yetвЂќ is acceptable. Write one complete uncertainty sentence.</li></ul>`,
+        3: `<h3>Correct test-day route</h3><ul><li>Main block: Listening в†’ Reading в†’ Writing.</li><li>Separate slot: Speaking.</li></ul>`,
         4: `<h3>Correct skill sort</h3><ul><li>Same in Academic and General Training: Listening, Speaking.</li><li>Different in Academic and General Training: Reading, Writing.</li></ul>`,
-        5: `<h3>Correct timing map</h3><ul><li>Listening: about 30 minutes, 40 questions, 4 parts.</li><li>Reading: 60 minutes, 40 questions, 3 sections.</li><li>Writing: 60 minutes, 2 tasks.</li><li>Speaking: 11–14 minutes, 3 parts.</li></ul>`,
+        5: `<h3>Correct timing map</h3><ul><li>Listening: about 30 minutes, 40 questions, 4 parts.</li><li>Reading: 60 minutes, 40 questions, 3 sections.</li><li>Writing: 60 minutes, 2 tasks.</li><li>Speaking: 11вЂ“14 minutes, 3 parts.</li></ul>`,
         6: `<h3>Correct Listening climb</h3><ul><li>Part 1 = B, Part 2 = A, Part 3 = D, Part 4 = C.</li><li>1 = Multiple choice, 2 = Matching, 3 = Plan/map/diagram labelling, 4 = Completion / short-answer tasks.</li></ul>`,
         7: `<h3>Correct Reading map</h3><ul><li>Academic Reading: A, B, C.</li><li>General Training Reading: D, E, F.</li><li>General Training Reading usually requires more correct answers for the same band.</li></ul>`,
-        8: `<h3>Correct Reading thinking jobs</h3><ul><li>True/False/Not Given = factual agreement.</li><li>Yes/No/Not Given = writer’s views or claims.</li><li>Headings = paragraph main idea.</li><li>Features/information = connect items to options.</li><li>Completion = fill missing information and obey word limits.</li><li>Multiple choice/short answer = precise detail.</li></ul>`,
+        8: `<h3>Correct Reading thinking jobs</h3><ul><li>True/False/Not Given = factual agreement.</li><li>Yes/No/Not Given = writerвЂ™s views or claims.</li><li>Headings = paragraph main idea.</li><li>Features/information = connect items to options.</li><li>Completion = fill missing information and obey word limits.</li><li>Multiple choice/short answer = precise detail.</li></ul>`,
         9: `<h3>Correct Writing plan</h3><ul><li>Academic Task 1 = visual information.</li><li>General Training Task 1 = letter.</li><li>Task 2 = essay in both versions.</li><li>Task 1 = 150 words, about 20 minutes.</li><li>Task 2 = 250 words, about 40 minutes, and counts twice as much.</li></ul>`,
         10: `<h3>Correct Speaking ladder</h3><ul><li>Part 1 = A + D.</li><li>Part 2 = B + E.</li><li>Part 3 = C + F.</li></ul>`,
         11: `<h3>Correct paper/computer sort</h3><ul><li>Paper: 1, 4.</li><li>Computer: 2, 7.</li><li>Same in both: 3, 6.</li><li>Check provider / centre: 5, 8, 9.</li></ul>`,
@@ -1862,7 +1880,7 @@
       const goal = esc(getAnswer("opening_goal", ""));
       return `
         <div class="copy-block">
-          <p>You may hear people say things like: “IELTS is impossible,” “Just learn templates,” “Speaking is the scariest part,” “Computer is easier,” or “Academic is completely different from General.”</p>
+          <p>You may hear people say things like: вЂњIELTS is impossible,вЂќ вЂњJust learn templates,вЂќ вЂњSpeaking is the scariest part,вЂќ вЂњComputer is easier,вЂќ or вЂњAcademic is completely different from General.вЂќ</p>
           <p>Some of those ideas are wrong. Some are partly true. Some depend on your test centre.</p>
           <p>So before you start practising random tasks, you need the map.</p>
           <p>In this short module, you will figure out the four IELTS sections, Academic/General differences, test-day flow, section demands, delivery mode differences, scoring logic, and which rumours to stop believing.</p>
@@ -1878,7 +1896,7 @@
           ${optionButtons("opening_prediction", ["Speed", "Focus", "Vocabulary", "Writing organisation", "Speaking confidence", "Time management", "Test-day nerves", "Not sure yet"])}
           <label>
             Now complete this sentence:
-            <span class="hint">“By the end of this lesson, I want to understand IELTS well enough to ______.” Write one complete short sentence — roughly 4 or more words with a verb.</span>
+            <span class="hint">вЂњBy the end of this lesson, I want to understand IELTS well enough to ______.вЂќ Write one complete short sentence вЂ” roughly 4 or more words with a verb.</span>
             <textarea id="openingGoal">${goal}</textarea>
           </label>
           <button class="primary-btn" id="save1" type="button">Save prediction</button>
@@ -1903,7 +1921,7 @@
           "Type your name, choose one prediction, and write one full sentence. Future You should understand what you wanted from this lesson.",
           "To continue from here, add your name or nickname, choose one prediction, and write a short goal sentence.",
           {
-            successHtml: `Prediction saved.<br>You chose: <strong>${esc(pred || "")}</strong><br>At the end of the lesson, we’ll come back to this and check how your view of IELTS changed.`,
+            successHtml: `Prediction saved.<br>You chose: <strong>${esc(pred || "")}</strong><br>At the end of the lesson, weвЂ™ll come back to this and check how your view of IELTS changed.`,
             onReveal: () => {
               if (!(state.answers.student_name || "").trim()) state.answers.student_name = "Student";
               saveState();
@@ -1933,8 +1951,8 @@
                   <div class="rank-desc">${esc(c.desc)}</div>
                 </div>
                 <div class="rank-actions">
-                  <button class="small-btn" data-move="${idx}" data-dir="-1" type="button" ${idx === 0 ? "disabled" : ""}>↑</button>
-                  <button class="small-btn" data-move="${idx}" data-dir="1" type="button" ${idx === ordered.length - 1 ? "disabled" : ""}>↓</button>
+                  <button class="small-btn" data-move="${idx}" data-dir="-1" type="button" ${idx === 0 ? "disabled" : ""}>в†‘</button>
+                  <button class="small-btn" data-move="${idx}" data-dir="1" type="button" ${idx === ordered.length - 1 ? "disabled" : ""}>в†“</button>
                 </div>
               </div>
             `).join("")}
@@ -1942,7 +1960,7 @@
           <div class="mini-note">The challenge I most want to understand today is: <strong>${esc(ordered[0]?.title || "")}</strong></div>
           <label>
             Why?
-            <span class="hint">“Because ______.” Write one complete short sentence — roughly 4 or more words with a verb.</span>
+            <span class="hint">вЂњBecause ______.вЂќ Write one complete short sentence вЂ” roughly 4 or more words with a verb.</span>
             <textarea id="priorityReason">${reason}</textarea>
           </label>
           <button class="primary-btn" id="save2" type="button">Save priority</button>
@@ -1975,10 +1993,10 @@
           1,
           ok,
           50,
-          "Add a real reason. “Because it is hard” is a start, but tell yourself why it feels hard.",
+          "Add a real reason. вЂњBecause it is hardвЂќ is a start, but tell yourself why it feels hard.",
           "A complete answer has your top challenge and one short sentence explaining why it matters.",
           {
-            successHtml: `Priority saved: <strong>${esc(top?.title || "")}</strong><br>Good. When this topic appears later, we’ll flag it as your priority so you know to slow down and think carefully.`,
+            successHtml: `Priority saved: <strong>${esc(top?.title || "")}</strong><br>Good. When this topic appears later, weвЂ™ll flag it as your priority so you know to slow down and think carefully.`,
             onCorrect: () => { state.answers.priority_challenge = top.title; saveState(); }
           }
         );
@@ -1998,7 +2016,7 @@
           <label>3. What is your main reason for IELTS?${optionButtons("purpose", ["University or professional registration", "Migration, work, training, or study below degree level", "School / family / other", "Not sure yet"])}</label>
           <label>
             Now write one honest sentence:
-            <span class="hint">“The IELTS part I feel least sure about is ______ because ______.” Write one complete short sentence — roughly 4 or more words with a verb.</span>
+            <span class="hint">вЂњThe IELTS part I feel least sure about is ______ because ______.вЂќ Write one complete short sentence вЂ” roughly 4 or more words with a verb.</span>
             <textarea id="worry">${esc(getAnswer("worry", ""))}</textarea>
           </label>
           <button class="primary-btn" id="save3" type="button">Save starting point</button>
@@ -2019,8 +2037,8 @@
         const ok = !!t && !!d && !!p && isCompleteShortSentence(w);
 
         let msg = "";
-        if (t === "Academic" && p === "University or professional registration") msg = "That matches the usual Academic pathway. You will still check your provider’s exact requirements later.";
-        else if (t === "General Training" && p === "Migration, work, training, or study below degree level") msg = "That matches the usual General Training pathway. You will still check your provider’s exact requirements later.";
+        if (t === "Academic" && p === "University or professional registration") msg = "That matches the usual Academic pathway. You will still check your providerвЂ™s exact requirements later.";
+        else if (t === "General Training" && p === "Migration, work, training, or study below degree level") msg = "That matches the usual General Training pathway. You will still check your providerвЂ™s exact requirements later.";
         else if (t === "Not sure yet" || p === "Not sure yet") msg = "Good. Your goal today is to understand the map well enough to ask the right question later.";
         else msg = "Pause: the documents describe Academic mainly for higher education/professional registration, and General Training mainly for migration, work/training, or below-degree study. You can continue, but mark this as something to verify.";
 
@@ -2029,7 +2047,7 @@
           ok,
           60,
           "Choose one option for all three questions and write a full sentence with a reason.",
-          "A complete answer chooses a test type, delivery mode, purpose, and one short uncertainty sentence. If you are unsure, choose “Not sure yet.”",
+          "A complete answer chooses a test type, delivery mode, purpose, and one short uncertainty sentence. If you are unsure, choose вЂњNot sure yet.вЂќ",
           { successHtml: msg }
         );
       });
@@ -2136,7 +2154,7 @@
           <h2 class="task-title">Cards</h2>
           ${cardPool(cards, p)}
           <div class="slot-group">
-            <h2 class="task-title">Main test-day block — no break between these three sections</h2>
+            <h2 class="task-title">Main test-day block вЂ” no break between these three sections</h2>
             ${dropSlot("main1", "1", cards, p)}
             ${dropSlot("main2", "2", cards, p)}
             ${dropSlot("main3", "3", cards, p)}
@@ -2166,7 +2184,7 @@
       const p = state.answers.same_diff || {};
       return `
         <div class="copy-block">
-          <p>People often talk about “Academic IELTS” and “General IELTS” as if they are four different tests. That is not accurate.</p>
+          <p>People often talk about вЂњAcademic IELTSвЂќ and вЂњGeneral IELTSвЂќ as if they are four different tests. That is not accurate.</p>
           <p>Sort the four skill cards into the correct trays.</p>
         </div>
         <div class="task-card">
@@ -2215,7 +2233,7 @@
     }
 
     function screen6() {
-      const tiles = ["About 30 minutes","40 questions","4 parts","60 minutes","3 sections","2 tasks","11–14 minutes","3 parts"];
+      const tiles = ["About 30 minutes","40 questions","4 parts","60 minutes","3 sections","2 tasks","11вЂ“14 minutes","3 parts"];
       return `
         <div class="copy-block">
           <p>Guess first. You are not being punished for wrong guesses. The point is to replace rumours with a usable exam map.</p>
@@ -2248,7 +2266,7 @@
           l_time:"About 30 minutes", l_q:"40 questions", l_s:"4 parts",
           r_time:"60 minutes", r_q:"40 questions", r_s:"3 sections",
           w_time:"60 minutes", w_s:"2 tasks",
-          s_time:"11–14 minutes", s_s:"3 parts"
+          s_time:"11вЂ“14 minutes", s_s:"3 parts"
         };
         const ok = Object.keys(ans).every(k => p[k] === ans[k]);
         submitScreen(
@@ -2258,7 +2276,7 @@
           "Some tiles need fixing. Listening has 4 parts and 40 questions. Reading has 3 sections and 40 questions. Writing has 2 tasks. Speaking has 3 parts.",
           answerRevealText(5),
           {
-            successHtml: "Good. You now have the basic time map.<br><br>Important note: Some overview pages give IELTS as “2 hours and 45 minutes” overall, but headline totals and detailed timings do not always add up neatly. For strategy, learn the operational flow, not just one headline number.",
+            successHtml: "Good. You now have the basic time map.<br><br>Important note: Some overview pages give IELTS as вЂњ2 hours and 45 minutesвЂќ overall, but headline totals and detailed timings do not always add up neatly. For strategy, learn the operational flow, not just one headline number.",
             onCorrect: n => { if (n === 1) unlockBadge("firstInstinct"); }
           }
         );
@@ -2332,7 +2350,7 @@
         const m = state.answers.listen_match || {};
         const okOrder = o.part1 === "B" && o.part2 === "A" && o.part3 === "D" && o.part4 === "C";
         const okMatch = m.m1 === "Multiple choice" && m.m2 === "Matching" && m.m3 === "Plan/map/diagram labelling" && m.m4 === "Completion / short-answer tasks";
-        submitScreen(6, okOrder && okMatch, 80, "Track the climb: social conversation → social monologue → educational/training conversation → academic monologue. Then match action to task type.", answerRevealText(6), { successHtml: "Yes. The progression is social conversation → social monologue → educational/training conversation → academic monologue." });
+        submitScreen(6, okOrder && okMatch, 80, "Track the climb: social conversation в†’ social monologue в†’ educational/training conversation в†’ academic monologue. Then match action to task type.", answerRevealText(6), { successHtml: "Yes. The progression is social conversation в†’ social monologue в†’ educational/training conversation в†’ academic monologue." });
       });
     }
 
@@ -2393,7 +2411,7 @@
     function screen9() {
       const jobs = [
         "A. Decide whether a factual statement agrees with the text, disagrees with it, or is not stated.",
-        "B. Decide whether a statement matches the writer’s view or claim, contradicts it, or is not stated.",
+        "B. Decide whether a statement matches the writerвЂ™s view or claim, contradicts it, or is not stated.",
         "C. Find the main idea of a paragraph.",
         "D. Connect people, places, features, statements, or information to the correct option.",
         "E. Fill missing information using the text and obey the word limit.",
@@ -2430,7 +2448,7 @@
           8,
           ok,
           75,
-          "Watch the trap: True/False/Not Given is about factual information. Yes/No/Not Given is about the writer’s views or claims.",
+          "Watch the trap: True/False/Not Given is about factual information. Yes/No/Not Given is about the writerвЂ™s views or claims.",
           answerRevealText(8),
           {
             successHtml: "Good. You are not just learning names; you are learning what each question asks your brain to do.",
@@ -2451,17 +2469,17 @@
           <p>Writing is 60 minutes. There are 2 tasks.</p>
         </div>
         <div class="task-card question-grid">
-          <h2 class="task-title">Step 1 — Match the task</h2>
+          <h2 class="task-title">Step 1 вЂ” Match the task</h2>
           <label>Academic Task 1 ${selectFrom("writing", "academic1", cards)}</label>
           <label>General Training Task 1 ${selectFrom("writing", "general1", cards)}</label>
           <label>Task 2 in both versions ${selectFrom("writing", "task2", cards)}</label>
-          <h2 class="task-title">Step 2 — Add word counts</h2>
+          <h2 class="task-title">Step 2 вЂ” Add word counts</h2>
           <label>Task 1 minimum ${selectFrom("writing", "words1", ["150", "250"])}</label>
           <label>Task 2 minimum ${selectFrom("writing", "words2", ["150", "250"])}</label>
-          <h2 class="task-title">Step 3 — Spend the 60 minutes</h2>
+          <h2 class="task-title">Step 3 вЂ” Spend the 60 minutes</h2>
           <label>Recommended Task 1 time ${selectFrom("writing", "time1", ["20", "40"])}</label>
           <label>Recommended Task 2 time ${selectFrom("writing", "time2", ["20", "40"])}</label>
-          <h2 class="task-title">Step 4 — Weighting</h2>
+          <h2 class="task-title">Step 4 вЂ” Weighting</h2>
           <label>Which task counts twice as much?${optionButtons("writing_weight", ["Task 1", "Task 2", "They count the same"])}</label>
           <button class="primary-btn" id="check10" type="button">Check Writing plan</button>
         </div>
@@ -2485,9 +2503,9 @@
 
     function screen11() {
       const formats = [
-        "A. Introduction and interview on familiar topics such as home, family, work, studies, and interests. About 4–5 minutes.",
-        "B. Long turn. You get a task card, 1 minute to prepare, then speak for up to 2 minutes. The part takes about 3–4 minutes including preparation.",
-        "C. Discussion linked to Part 2, but more general and abstract. About 4–5 minutes."
+        "A. Introduction and interview on familiar topics such as home, family, work, studies, and interests. About 4вЂ“5 minutes.",
+        "B. Long turn. You get a task card, 1 minute to prepare, then speak for up to 2 minutes. The part takes about 3вЂ“4 minutes including preparation.",
+        "C. Discussion linked to Part 2, but more general and abstract. About 4вЂ“5 minutes."
       ];
       const skills = [
         "D. Giving opinions and information on everyday topics and common experiences.",
@@ -2496,7 +2514,7 @@
       ];
       return `
         <div class="copy-block">
-          <p>Speaking is short, but it is structured: 11–14 minutes, 3 parts.</p>
+          <p>Speaking is short, but it is structured: 11вЂ“14 minutes, 3 parts.</p>
           <p>It is an interview or conversation with a certificated IELTS examiner, and it is recorded. Some official pages describe face-to-face Speaking; other official pages say some centres use video-call Speaking. The lesson rule: check your centre, but do not assume the scoring changes.</p>
         </div>
         <div class="task-card question-grid">
@@ -2520,7 +2538,7 @@
           (s.part2_format || "").startsWith("B.") && (s.part2_skill || "").startsWith("E.") &&
           (s.part3_format || "").startsWith("C.") && (s.part3_skill || "").startsWith("F.");
         let msg = "Good. Speaking moves from familiar questions to a prepared long turn to a more abstract discussion.";
-        if (/speaking/i.test(state.answers.worry || "")) msg += "<br><br>Earlier, you said Speaking felt uncertain. Your first anchor is simple: familiar → long turn → abstract.";
+        if (/speaking/i.test(state.answers.worry || "")) msg += "<br><br>Earlier, you said Speaking felt uncertain. Your first anchor is simple: familiar в†’ long turn в†’ abstract.";
         submitScreen(10, ok, 75, "Think of the mental demand: everyday information, then organised long speaking, then analysis/speculation.", answerRevealText(10), { successHtml: msg });
       });
     }
@@ -2580,10 +2598,10 @@
         </div>
         <div class="task-card question-grid">
           <h2 class="task-title">Calculation 1</h2>
-          <p>Listening: 6.0 · Reading: 6.0 · Writing: 6.5 · Speaking: 6.5 · Average = 6.25</p>
+          <p>Listening: 6.0 В· Reading: 6.0 В· Writing: 6.5 В· Speaking: 6.5 В· Average = 6.25</p>
           <label>Overall Band Score should be:${optionButtons("calc1", ["6.0", "6.5", "7.0"])}</label>
           <h2 class="task-title">Calculation 2</h2>
-          <p>Listening: 6.5 · Reading: 7.0 · Writing: 7.0 · Speaking: 6.5 · Average = 6.75</p>
+          <p>Listening: 6.5 В· Reading: 7.0 В· Writing: 7.0 В· Speaking: 6.5 В· Average = 6.75</p>
           <label>Overall Band Score should be:${optionButtons("calc2", ["6.5", "7.0", "7.5"])}</label>
           <h2 class="task-title">Now sort the criteria</h2>
           <p class="hint">Some cards may belong to both sections.</p>
@@ -2689,24 +2707,24 @@
       const a = state.answers;
       const fields = [
         ["map1", `1. The IELTS version I am preparing for is probably ______. This matters because Reading and Writing ______.`],
-        ["map2", `2. The main test-day block is ______ → ______ → ______, and Speaking ______.`],
+        ["map2", `2. The main test-day block is ______ в†’ ______ в†’ ______, and Speaking ______.`],
         ["map3", `3. The section I need to watch most carefully for time is ______ because ______.`],
         ["map4", `4. My delivery mode is probably ______. One practical thing I must check or practise is ______.`],
-        ["map5", `5. My earlier uncertainty was: “${esc(a.worry || "Not saved yet")}”. One fact from this lesson that changes how I see it is ______.`]
+        ["map5", `5. My earlier uncertainty was: вЂњ${esc(a.worry || "Not saved yet")}вЂќ. One fact from this lesson that changes how I see it is ______.`]
       ];
       return `
         <div class="copy-block">
           <p>You started with these thoughts:</p>
           <p><strong>IELTS will probably demand the most from my:</strong> ${esc(a.opening_prediction || "Not saved yet")}</p>
-          <p><strong>My lesson goal was:</strong> “${esc(a.opening_goal || "Not saved yet")}”</p>
+          <p><strong>My lesson goal was:</strong> вЂњ${esc(a.opening_goal || "Not saved yet")}вЂќ</p>
           <p><strong>My priority challenge was:</strong> ${esc(a.priority_challenge || "Not saved yet")}</p>
-          <p><strong>My reason was:</strong> “${esc(a.priority_reason || "Not saved yet")}”</p>
-          <p><strong>Your likely test type:</strong> ${esc(a.test_type || "Not saved yet")}<br><strong>Your likely delivery mode:</strong> ${esc(a.delivery_mode || "Not saved yet")}<br><strong>Your reason:</strong> ${esc(a.purpose || "Not saved yet")}<br><strong>Your uncertainty:</strong> “${esc(a.worry || "Not saved yet")}”</p>
+          <p><strong>My reason was:</strong> вЂњ${esc(a.priority_reason || "Not saved yet")}вЂќ</p>
+          <p><strong>Your likely test type:</strong> ${esc(a.test_type || "Not saved yet")}<br><strong>Your likely delivery mode:</strong> ${esc(a.delivery_mode || "Not saved yet")}<br><strong>Your reason:</strong> ${esc(a.purpose || "Not saved yet")}<br><strong>Your uncertainty:</strong> вЂњ${esc(a.worry || "Not saved yet")}вЂќ</p>
           <p class="mini-note">Write your own IELTS map. Then press Submit to reveal the expert map and compare.</p>
         </div>
         <div class="task-card question-grid">
           <h2 class="task-title">Now finish the lesson by writing your own IELTS map.</h2>
-          <p class="hint">Each answer only needs to be a complete short sentence — roughly 4 or more words with a verb. Do not write single words or fragments.</p>
+          <p class="hint">Each answer only needs to be a complete short sentence вЂ” roughly 4 or more words with a verb. Do not write single words or fragments.</p>
           ${fields.map(([key,label]) => `<label>${label}<textarea data-map-field="${key}">${esc(getAnswer(key, ""))}</textarea></label>`).join("")}
           <button class="primary-btn" id="check15" type="button">Submit my IELTS map</button>
         </div>
@@ -2725,19 +2743,19 @@
       const checks = mapKeyChecks();
       return `
         <div class="model-answer">
-          <h3>Expert IELTS map — compare yours with this</h3>
+          <h3>Expert IELTS map вЂ” compare yours with this</h3>
           <ul class="model-list">
             <li><strong>1. Test type:</strong> Academic and General Training share Listening and Speaking. Reading and Writing are the parts that differ, so your test type matters most for those two sections.</li>
-            <li><strong>2. Test-day shape:</strong> The main block is Listening → Reading → Writing with no break between those three sections. Speaking is scheduled separately: it may be on the same day or close to the main test day, depending on local arrangements.</li>
+            <li><strong>2. Test-day shape:</strong> The main block is Listening в†’ Reading в†’ Writing with no break between those three sections. Speaking is scheduled separately: it may be on the same day or close to the main test day, depending on local arrangements.</li>
             <li><strong>3. Time risk:</strong> Reading needs careful time control because the 60 minutes includes answer management and there is no extra transfer time. Writing also needs planning because Task 2 should be protected: it is longer and counts twice as much as Task 1.</li>
             <li><strong>4. Delivery mode:</strong> Paper and computer IELTS keep the same content, question types, and scoring. The practical experience changes, so practise the right muscle memory and check your provider/centre for centre-specific details such as Speaking delivery, computer Listening wrap-up, and paper availability.</li>
             <li><strong>5. Your uncertainty:</strong> Connect your worry to one concrete exam fact. Good IELTS preparation starts when you replace rumours with the map: test type, section order, timing, task format, delivery mode, and scoring logic.</li>
           </ul>
           <h3>Your comparison notes</h3>
           <div class="comparison-grid">
-            <div class="comparison-item ${checks.item1 ? "ok" : "check"}">${checks.item1 ? "✓" : "Compare:"} Item 1 should include the Academic/General rule: Listening and Speaking stay the same; Reading and Writing differ.</div>
-            <div class="comparison-item ${checks.item2 ? "ok" : "check"}">${checks.item2 ? "✓" : "Compare:"} Item 2 should include Listening → Reading → Writing and separate Speaking scheduling.</div>
-            <div class="comparison-item ${checks.item4 ? "ok" : "check"}">${checks.item4 ? "✓" : "Compare:"} Item 4 should be operational: typing, screen navigation, transfer time, answer sheets, Speaking delivery, paper availability, or checking provider/centre instructions.</div>
+            <div class="comparison-item ${checks.item1 ? "ok" : "check"}">${checks.item1 ? "вњ“" : "Compare:"} Item 1 should include the Academic/General rule: Listening and Speaking stay the same; Reading and Writing differ.</div>
+            <div class="comparison-item ${checks.item2 ? "ok" : "check"}">${checks.item2 ? "вњ“" : "Compare:"} Item 2 should include Listening в†’ Reading в†’ Writing and separate Speaking scheduling.</div>
+            <div class="comparison-item ${checks.item4 ? "ok" : "check"}">${checks.item4 ? "вњ“" : "Compare:"} Item 4 should be operational: typing, screen navigation, transfer time, answer sheets, Speaking delivery, paper availability, or checking provider/centre instructions.</div>
           </div>
         </div>
       `;
@@ -2758,7 +2776,7 @@
           14,
           allSentences,
           85,
-          "Write full sentences. Short is fine — but avoid single words or fragments.",
+          "Write full sentences. Short is fine вЂ” but avoid single words or fragments.",
           "The model IELTS map is shown below. Forward is unlocked so you can continue after reviewing it.",
           {
             revealOnCorrect: true,
@@ -2801,8 +2819,8 @@
           <div class="task-card copy-block">
             <h2 class="task-title">Nice work.</h2>
             <p>You did not just click through an IELTS introduction.</p>
-            <p>You built the exam map yourself: Listening → Reading → Writing in the main no-break block, with Speaking scheduled separately depending on local arrangements.</p>
-            <p>You also learned the big orientation rules: Academic and General Training share Listening and Speaking, but differ in Reading and Writing. Reading gives 60 minutes and no extra transfer time. Writing has two tasks, and Task 2 counts twice as much as Task 1. Speaking has three parts, moving from familiar topics to a long turn and then a more abstract discussion. Paper and computer IELTS keep the same content, question types, and scoring, but the practical experience can differ — and some details must be checked with your provider or centre.</p>
+            <p>You built the exam map yourself: Listening в†’ Reading в†’ Writing in the main no-break block, with Speaking scheduled separately depending on local arrangements.</p>
+            <p>You also learned the big orientation rules: Academic and General Training share Listening and Speaking, but differ in Reading and Writing. Reading gives 60 minutes and no extra transfer time. Writing has two tasks, and Task 2 counts twice as much as Task 1. Speaking has three parts, moving from familiar topics to a long turn and then a more abstract discussion. Paper and computer IELTS keep the same content, question types, and scoring, but the practical experience can differ вЂ” and some details must be checked with your provider or centre.</p>
             <p><strong>Your real win:</strong> you now know what to pay attention to before training begins.</p>
             <p class="mini-note">Takeaway: IELTS preparation starts faster when you understand the machine: test type, section order, timing, task format, delivery mode, and scoring logic.</p>
           </div>
@@ -3005,7 +3023,7 @@
           l_time:"About 30 minutes", l_q:"40 questions", l_s:"4 parts",
           r_time:"60 minutes", r_q:"40 questions", r_s:"3 sections",
           w_time:"60 minutes", w_s:"2 tasks",
-          s_time:"11–14 minutes", s_s:"3 parts"
+          s_time:"11вЂ“14 minutes", s_s:"3 parts"
         },
         listen_order: { part1:"B", part2:"A", part3:"D", part4:"C" },
         listen_match: {
@@ -3018,7 +3036,7 @@
         reading_diag: "General Training Reading",
         reading_match: {
           q1:"A. Decide whether a factual statement agrees with the text, disagrees with it, or is not stated.",
-          q2:"B. Decide whether a statement matches the writer’s view or claim, contradicts it, or is not stated.",
+          q2:"B. Decide whether a statement matches the writerвЂ™s view or claim, contradicts it, or is not stated.",
           q3:"C. Find the main idea of a paragraph.",
           q4:"D. Connect people, places, features, statements, or information to the correct option.",
           q5:"E. Fill missing information using the text and obey the word limit.",
@@ -3035,11 +3053,11 @@
         },
         writing_weight: "Task 2",
         speaking: {
-          part1_format:"A. Introduction and interview on familiar topics such as home, family, work, studies, and interests. About 4–5 minutes.",
+          part1_format:"A. Introduction and interview on familiar topics such as home, family, work, studies, and interests. About 4вЂ“5 minutes.",
           part1_skill:"D. Giving opinions and information on everyday topics and common experiences.",
-          part2_format:"B. Long turn. You get a task card, 1 minute to prepare, then speak for up to 2 minutes. The part takes about 3–4 minutes including preparation.",
+          part2_format:"B. Long turn. You get a task card, 1 minute to prepare, then speak for up to 2 minutes. The part takes about 3вЂ“4 minutes including preparation.",
           part2_skill:"E. Speaking at length on a given topic, using appropriate language and organising ideas logically.",
-          part3_format:"C. Discussion linked to Part 2, but more general and abstract. About 4–5 minutes.",
+          part3_format:"C. Discussion linked to Part 2, but more general and abstract. About 4вЂ“5 minutes.",
           part3_skill:"F. Explaining opinions and analysing, discussing, and speculating about issues."
         },
         mode_sort: { paper:["1","4"], computer:["2","7"], same:["3","6"], check:["5","8","9"] },
@@ -3222,3 +3240,4 @@
   </script>
 </body>
 </html>
+
